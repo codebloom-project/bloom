@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<link rel="stylesheet" href="/css/schedule/schedule-manager.css">
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<th:block th:replace="~{schedule/calendar::head}" />
+	<style>
+		#listCalendar{left:0}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="flex">
+			<div class="list">
+				<div class="listtitle center">일정 목록</div>
+				<ul>
+					<li class="eventList" th:each="schedule:${result.dtoList}">
+						<button class="123 button" th:text="${schedule.title}"></button>
+						<p th:text="${#temporals.format(schedule.start, 'yyyy-MM-dd a hh:mm')}"></p>
+						<p>~</p>
+						<p th:text="${#temporals.format(schedule.end, 'yyyy-MM-dd a hh:mm')}"></p>
+					</li>
+				</ul>
+				<ul class="flex center pagearea">
+					<th:block th:each="page:${result.pageList}">
+						<div>
+							<a th:href="@{/schedule-manager(page=${page})}">
+								<p class="page">[[${page}]]</p>
+							</a>
+						</div>
+					</th:block>
+				</ul>
+			</div>
+			<th:block th:replace="~{schedule/calendar::calendar}" class="calendar123" />
+		</div>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<div class="managerTitle">일정 관리<span class="close">&times;</span></div>
+				<div>일정 제목</div>
+				<input type="text" class="flex center inputTitle" id="modalTitleInput" readonly>
+				<div>일정 기간</div>
+				<div class="flex center">
+					<input type="datetime-local" id="modalStartDayInput" readonly>
+					<div style="display: block; line-height: 45px;">&nbsp~&nbsp</div>
+					<input type="datetime-local" id="modalEndDayInput" readonly>
+				</div>
+				<div>일정 상세 내용</div>
+				<textarea id="modalContentInput" class="inputContent flex center" readonly></textarea>
+				<div class="flex center">
+					<button class="button" id="editButton">수정</button>
+					&nbsp&nbsp
+					<button class="button" id="deleteButton">삭제</button>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

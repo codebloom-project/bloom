@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="commonLayout(head, main)">
+	<head>
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<link rel="stylesheet" href="/css/common/reset.css">
+		<link rel="stylesheet" href="/css/common/header.css">
+		<script type="text/javascript" src="/js/common/header.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+		<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+		<th:block th:replace="~{weather/weather-view::head}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/css/common/chat-bot.css">
+		<th:block th:replace="${head}">페이지마다 적용될 css,js resource</th:block>
+		<style>
+			main{
+				width:100%;
+				padding: 40px;
+			}
+		</style>
+	</head>
+	<body class="flex">
+		<th:block th:replace="~{common/header}">header섹션 적용</th:block>
+		<th:block th:replace="~{weather/weather-view::weatherView}" />
+		<th:block th:replace="${main}">main섹션 적용</th:block>
+		<script>
+			document.getElementById('go-up').addEventListener('click', () => {
+			  window.scrollTo({
+			    top: 0,
+			    left: 0,
+			    behavior: 'smooth'
+			  });
+			})
+		</script>
+		<aside id="chat-bot">
+		<h1>챗봇</h1>
+		<div class="wrap">
+			<article id="chat-bot">
+				<h1>챗봇</h1>
+				<div class="wrap">
+					<section id="conversation">
+						<h1>대화화면</h1>
+						<div class="wrap">
+							<ul class="bot-menu">
+								<button class="btn-bot" id="btn-bot"></button>
+							</ul>
+							<div class="container" id="bot-container">
+								<div class="c-header flex between center">
+									<p class="chat-bot-title">Bloom 챗봇</p>
+									<p class="close flex end">
+										<span onclick="btnCloseClicked()"></span>
+									</p>
+								</div>
+								<div class="c-content" id="chat-content">
+									<!--대화내용 들어가는 영역-->
+
+								</div>
+								<div class="c-question flex col-center">
+									<span class="home-icon"></span>
+									<span class="q-wrap">
+										<input type="text" class="question" id="question" placeholder="질문을 입력하세요" onkeyup="checkEnterKey(event)">
+										<button class="btn-send" onclick="btnMsgSendClicked()"></button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</article>
+		</div>
+	</aside>
+	</body>
+</html>

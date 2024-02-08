@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+	th:fragment="commonLayout(head)">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3063f643d9f978d8d5db40f2b370da53&libraries=services"></script>
+<script src="/js/weather/mapConvertGridXy.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<link rel="stylesheet" href="/css/weather/weather.css">
+<script src="/js/weather/weather.js"></script>
+</head>
+<body>
+	<section th:fragment="weatherView" id='weatherView'>
+		<div>
+			<div id="weather-week-data"></div>
+			<div id="weather-live-data"></div>
+			<button class="logout-btn" onclick="openWeather()">오늘날씨</button>
+			<figure class="highcharts-figure" style="display: none;">
+				<img class="close-weather" onclick="closeWeather()" src="/img/common/close.svg">
+				<div id="container"></div>
+			</figure>
+		</div>
+	</section>
+</body>
+</html>

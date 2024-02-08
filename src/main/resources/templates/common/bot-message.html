@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<div class="flex center date" th:if="${msg.today}" th:text="${msg.today}"></div>
+<div class="msg bot flex">
+	<div class="icon">
+		<img src="/img/common/bloomLogo.png">
+	</div>
+	<div class="message">
+		<div class="part" th:if="${msg.answer.keyword ne '전화번호' or msg.answer.phone != null}">
+			<p th:utext="${msg.answer.content}"></p>
+		</div>
+		<div th:if="${msg.answer.keyword eq '전화번호'}">
+			<div class="part" th:each="p:${msg.answer.phone}">
+				<p>
+					<span th:text="${p.deptName}"></span>부서<br><br>
+					<span th:text="${p.memberName}" style="font-weight: bold;"></span>&nbsp;씨의 전화번호는&nbsp;<br>
+					[&nbsp;<span th:text="${p.phone}"></span>&nbsp;]&nbsp;입니다.
+				</p>
+			</div>
+			<div class="part" th:if="${#lists.isEmpty(msg.answer.phone)}">
+				<p>
+					존재하지 않는 사원입니다.
+				</p>
+			</div>
+		</div>
+		<div th:if="${msg.answer.keyword eq '부서'}">
+			<div class="part" th:each="d:${msg.answer.dept}">
+				<p>
+					<span th:text="${d.memberName}"></span>의 부서는<br>
+					<span th:text="${d.deptName}" style="font-weight: bold;"></span>부서 입니다.
+				</p>
+			</div>
+			<div class="part" th:if="${#lists.isEmpty(msg.answer.dept)}">
+				<p>
+					존재하지 않는 사원입니다.
+				</p>
+			</div>
+		</div>
+		<div th:if="${msg.answer.keyword eq '일정'}">
+			<div class="part" th:each="s : ${msg.answer.schedule}">
+				<p th:if="${s.categori}==false">
+					<span th:text="${s.title}" style="text-decoration: underline;  text-underline-offset: 3px; font-weight: bold;"></span><br><br>
+					<span th:text="${#temporals.format(s.start, 'yyyy-MM-dd')}"></span>&nbsp;~&nbsp;
+					<span th:text="${#temporals.format(s.end, 'yyyy-MM-dd')}"></span>
+				</p>
+				<p th:if="${s.categori==true}">
+					<span th:text="${s.title}" style="text-decoration: underline;  text-underline-offset: 3px; font-weight: bold;"></span><br><br>
+					<span th:text="${#temporals.format(s.start, 'yyyy-MM-dd a hh:mm')}"></span>&nbsp;~&nbsp;
+					<span th:text="${#temporals.format(s.end, 'yyyy-MM-dd a hh:mm')}"></span>
+				</p>
+			</div>
+		</div>
+		<div class="time" th:text="${msg.time}">메세지 작성 시간</div>
+	</div>
+</div>
+
+</html>

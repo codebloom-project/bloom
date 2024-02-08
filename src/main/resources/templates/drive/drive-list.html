@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listDrive{left:0}
+	#addFile{width:80%}
+	.big{width:200px !important}
+</style>
+<link rel="stylesheet" href="/css/drive/drive-list.css">
+</head>
+<body>
+	<main>
+		<section class="drive-list">
+			<p class="title-font">공유문서 목록</p>
+			<div class="flex between list-title">
+				<p class="width-short">파일번호</p>
+				<p class="width-short">게 시 자</p>
+				<p class="width-normal">파일제목</p>
+				<p class="width-large">파일설명</p>
+				<p class="width-normal">파일다운로드</p>
+			</div>
+			<div class="flex between list-info col-centter" th:each="drive :${result.dtoList}">
+				<p class="width-short" th:text="${drive.no}"></p>
+				<p class="width-short" th:text="${drive.driveName}"></p>
+				<p class="width-normal" th:text="${drive.driveTitle}"></p>
+				<p class="width-large" th:text="${drive.driveContent}"></p>
+				<a class="width-normal" th:href="@{|/files/${drive.newName}/${drive.orgName}|}" th:text="${drive.orgName}"></a>
+			</div>
+		</section>
+		<ul class="page-list flex center">
+			<li class="page-item pageNum page-prev" th:if="${result.prev}">
+				<a class="page-link" th:href="@{/drive-list(page=${result.start -1})}"							tabindex="-1">
+		  	      <img src="/img/common/left.svg">
+		   	    </a>
+		   	    <span></span>
+			</li>
+			<th:block th:each="page:${result.pageList}">
+				<li>
+					<div class="pageNum" >
+			        	<a  th:href="@{/drive-list(page=${page})}">
+							<p>[[${page}]]</p>
+						</a> 
+					</div>
+				</li>
+				<span></span>
+			</th:block>
+			<l1 class="page-item pageNum page-next" th:if="${result.next}">
+				<a class="page-link" th:href="@{/drive-list(page=${result.end+1})}">
+		        	<img src="/img/common/right.svg">
+		       	</a>
+			</l1>
+		</ul>
+	</main>
+</body>
+</html>

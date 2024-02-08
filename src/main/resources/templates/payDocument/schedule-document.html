@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listPayDoc{left:0}
+</style>
+<link rel="stylesheet" href="/css/payDocument/user-document.css">
+</head>
+<body>
+	<main>
+		<p class="title-font">본인결재문서</p>
+		<div class="flex center pay-tap">
+			<a th:href="|/schedule-doc/${#authentication.principal.empNo}|"><div id="sdocTap">일정결재문서</div></a>
+			<span></span>
+			<a th:href="|/lesson-doc/${#authentication.principal.empNo}|"><div id="lessonTap">강의개설결재문서</div></a>
+		</div>
+		<section id="sdoc" class="sdoc">
+			<div class="flex between sdoc_title">
+				<p class="small">번호</p>
+				<p class="large">기안자</p>
+				<p class="large">기안날짜</p>
+				<p class="small">종류</p>
+				<p class="large">결재현황</p>
+			</div>
+			<div class="flex between sdoc_info" th:each="schedule:${scheduleList}">
+				<p class="small" th:text="${schedule.sdocNo}"></p>
+				<p class="large" th:text="${schedule.sdocName}"></p>
+				<p class="large" th:text="${schedule.sdocMake}"></p>
+				<p class="small" th:text="${schedule.sdocCate}"></p>
+				<p class="large" th:text="${schedule.sdocCurrent}"></p>
+			</div>
+			<div class="pagging-wrap">
+				<a th:if="${pu.from>1}" th:href="|/schedule-doc/${#authentication.principal.empNo}?page=${1}|">
+					<button>&LT;&LT;</button>
+				</a>
+				<a th:if="${pu.from>1}" th:href="|/schedule-doc/${#authentication.principal.empNo}?page=${pu.from-1}|">
+					<button>&LT;</button>
+				</a>
+				<span id="pagging">
+					<a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="|/schedule-doc/${#authentication.principal.empNo}?page=${pno}|">
+						<button th:text="${pno}"></button>
+					</a>
+				</span>
+				<a th:if="${pu.to < pu.tot}" th:href="|/schedule-doc/${#authentication.principal.empNo}?page=${pu.to+1}|">
+					<button>&GT;</button>
+				</a>
+				<a th:if="${pu.to < pu.tot}" th:href="|/schedule-doc/${#authentication.principal.empNo}?page=${pu.tot}|">
+					<button>&GT;&GT;</button>
+				</a>
+			</div>
+			<script th:inline="javascript">
+				var page=/*[[${param.page}]]*/null;
+				var pageLimit=/*[[${pu.pageLimit}]]*/null;
+				if(page==null) page="1";
+				//console.log(page);
+				var idx=(parseInt(page)-1)%pageLimit;
+				//const element = document.getElementById("pagging");
+				//jquery
+				//$(".btn-page").eq(idx).addClass("target");
+				//vanila js
+				var elements = document.querySelectorAll(".btn-page");
+				elements[idx].classList.add("target");
+			</script>
+		</section>
+	</main>
+</body>
+</html>

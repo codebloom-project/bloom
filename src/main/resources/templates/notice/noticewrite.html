@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<link rel="stylesheet" href="/css/notice/noticewrite.css">
+	<link rel="stylesheet" href="/css/common/reset.css">
+	
+	<!-- 서머노트를 위해 추가해야할 부분 -->
+	<script src="/summernote/summernote-lite.js"></script>
+	<script src="/summernote/lang/summernote-ko-KR.js"></script>
+	<script src="/summernote/my-summernote.js"></script>
+	<link rel="stylesheet" href="/summernote/summernote-lite.css">
+	<script>
+		/**
+		*이미지 파일 업로드
+		*/
+		function uploadSummernoteImageFile(file, editor) {
+			
+			var formData = new FormData();
+			formData.append("goodsImg", file);
+			
+			$.ajax({
+				data: formData,
+				type: "POST",
+				url: "/admin/temp-upload",
+				contentType: false,
+				processData: false,
+				success: function (result) {
+					//항상 업로드된 파일의 url이 있어야 한다.
+					$(editor).summernote('insertImage', result.url);
+					
+					var tempkey = $("<input type='hidden' name='tempKey'>").val(result.bucketKey);
+					var orgname = $("<input type='hidden' name='orgName'>").val(result.orgName);
+					$(editor).after(tempkey, orgname);    
+				}
+			});
+		}
+	</script>
+	<style>
+		.note-editable {
+			background-color: #fff;
+		}
+		#listNotice{left:0}
+	</style>
+</head>
+
+<body>
+	<main>
+	
+		<p class="title-font">공지사항 등록</p>
+		<div class="main_content">
+			<form method="post" action="/noticewrite" class="regi-form">
+				<div class="register">
+					<div class="box">
+						<div class="box_left">
+							<h3>
+								제목
+							</h3>
+						</div>
+						<div class="box_right">
+							<input name="title">
+						</div>
+					</div>
+					<div class="box">
+						<div class="box_left" style="flex-flow: column;">
+							<h3>
+								내용
+							</h3><br>
+							<!--<span class="annotation">
+								*이미지 저장시 클릭 후 100%로 지정해주세요
+							</span>-->
+						</div>
+						<div class="box_right">
+							<textarea id="summernote" name="content"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="button_area">
+					<button>등 록 하 기</button>
+				</div>
+			</form>
+		</div>
+		</div>
+	</main>
+</body>
+
+</html>

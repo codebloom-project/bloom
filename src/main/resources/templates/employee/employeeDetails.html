@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<div id="employee-details-wrap" class="hide">
+		<div class="employee-details-head flex center-1 heavy">
+			<span>Details</span>
+			<img src="/img/employee/close-ico.svg" id="employee-details-disable">
+		</div>
+		<div class="employee-details">
+			<span>이름</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empName}">이름</span>
+		</div>
+		<div class="employee-details">
+			<span>부서</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empDept}">부서</span>
+		</div>
+		<div class="employee-details">
+			<span>직급</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empRole}">직급</span>
+		</div>
+		<div class="employee-details">
+			<span>생년월일</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empBirth}">생년월일</span>
+		</div>
+		<div class="employee-details">
+			<span>전화번호</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empPhone}">전화번호</span>
+		</div>
+		<div class="employee-details">
+			<span>입사일</span>
+			<span class="employee-details-text" th:text="${#temporals.format(employeeDetails.empHireDate, 'yyyy-MM-dd')}">입사일</span>
+		</div>
+		<div class="employee-details">
+			<span>근태</span>
+			<span class="employee-details-text">근태</span>
+		</div>
+		<div class="employee-details">
+			<span>고용 상태</span>
+			<span class="employee-details-text" th:text="${employeeDetails.empStatus}">고용 상태</span>
+		</div>
+		<div class="employee-details-btn flex center-1">
+			<button id="employee-details-modify" class="button">Modify</button>
+		</div>
+	</div>
+	
+	<div id="employee-modify-wrap" class="hide">
+		<form class="employee-modify-form" th:action="|/employee/details/${employeeDetails.empNo}|" method="post">
+			<div class="employee-details-head flex center-1 heavy">
+				<span>Modify</span>
+				<img src="/img/employee/close-ico.svg" id="employee-modify-disable">
+			</div>
+			<div class="employee-details">
+				<span>이름</span>
+				<input type="text" name="empName" th:value="${employeeDetails.empName}">
+			</div>
+			<div class="employee-details employee-details-dept">
+				<span>부서</span>
+				<label class="radio-btn">
+						행정<input type="radio" name="empDept" onclick="changeColor(this)" value="행정">
+					</label>
+					<label class="radio-btn">
+						인사<input type="radio" name="empDept" onclick="changeColor(this)" value="인사">
+					</label>
+					<label class="radio-btn">
+						재무<input type="radio" name="empDept" onclick="changeColor(this)" value="재무">
+					</label>
+					<label class="radio-btn">
+						강사<input type="radio" name="empDept" onclick="changeColor(this)" value="강사">
+					</label>
+			</div>
+			<div class="employee-details">
+				<span>직급</span>
+				<span class="employee-details-text">직급</span>
+			</div>
+			<div class="employee-details">
+				<span>생년월일</span>
+				<input type="text" name="empBirth" th:value="${employeeDetails.empBirth}">
+			</div>
+			<div class="employee-details">
+				<span>전화번호</span>
+				<input type="text" name="empPhone" th:value="${employeeDetails.empPhone}">
+			</div>
+			<div class="employee-details">
+				<span>입사일</span>
+				<input type="date" name="empHireDate" th:value="${#temporals.format(employeeDetails.empHireDate, 'yyyy-MM-dd')}">
+			</div>
+			<div class="employee-details">
+				<span>근태</span>
+				<span class="employee-details-text">근태</span>
+			</div>
+			<div class="employee-details">
+				<span>고용 상태</span>
+				<span class="employee-details-text">고용 상태</span>
+			</div>
+			<div class="employee-details-btn flex center-1">
+				<button id="employee-modify-complete" class="employee-details-btn-1 button">Complete</button>
+				<input type="hidden" name="empNo" th:value="${employeeDetails.empNo}">
+				<input type="hidden" name="_method" value="put">
+			</div>
+		</form>
+	</div>
+</html>

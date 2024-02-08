@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.sdoc, .lesson{
+	margin-top: 20px;
+}
+.pay-tap span{
+	display: block;
+	width:20px;
+}
+.pay-tap div{
+	border: 1px solid #222;
+	width:200px;
+	height:70px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	font-size: 1.3rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+#sdocTap{
+	background-color: #B69CC9;
+	color: white;
+	border: none;
+	border: 1px solid #B69CC9;
+}
+.sdoc .sdoc_title p, .lesson .lesson_title p{
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+.sdoc p, .lesson p{
+	text-align: center;
+}
+.sdoc .small{
+	width:15%;
+}
+.sdoc .large{
+	width:23%;
+}
+.lesson .small{
+	width:10%;
+}
+.lesson .large{
+	width:20%;
+}
+.sdoc .sdoc_title, .lesson .lesson_title {
+	padding: 20px 0;
+	border-bottom: 1px solid #222;
+	background-color: #DDCAE2;
+}
+.sdoc .sdoc_info, .lesson .lesson_info {
+	padding:15px 0;
+	border-bottom: 1px solid #ddd;
+}
+.btn-page.target > button{
+	background-color: #B69CC9;
+	color:white;
+}
+.pagging-wrap{
+	text-align: center;
+	margin-top: 20px;
+}
+.pagging-wrap a button{
+	width:35px;
+	height:35px;
+	cursor: pointer;
+	border-radius: 50%;
+	font-size: 1.1rem;
+	font-weight: bold;
+	background-color: white;
+}

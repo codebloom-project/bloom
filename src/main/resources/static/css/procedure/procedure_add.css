@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  border: 0px solid silver;
+}
+
+button{
+	cursor: pointer;
+}
+
+.container_proadd{
+	box-sizing: border-box; user-select: none !important;
+}
+
+.content_proadd{
+	width: 700px;
+}
+
+.main_area{
+	border: 2px solid #BE9FE1;
+	box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #F1F1F6;
+}
+
+input{
+	outline: 0;
+	background: none;
+}
+
+/************************************************************/
+
+.teacher_area{
+	display: flex;
+	justify-content: space-between;
+	margin-left: 50px; margin-right: 50px;
+	margin-top: 20px;
+}
+
+.pro_input{
+	width: 200px; height: 100px;
+	padding: 10px 0 14px;
+    position: relative;
+}
+
+.input_title{
+	font-size: 20px; font-weight: 1000;
+	margin-bottom: 10px;
+}
+
+.input_item{
+	position: relative;
+}
+
+.input_txt{
+	padding: 8px 0 8px 0;
+	font-size: 15px;
+	border-bottom: 1px solid #d0d0d0;
+	outline: 0;
+}
+
+.input_txt:hover{
+	border-bottom: 1px solid #9B51E0; 
+}
+
+.input_txt:focus{
+	border-bottom: 1px solid #9B51E0; 
+}
+
+.teacher_input{
+	width: 200px; height: 100px;
+	padding: 10px 0 14px;
+    position: relative;
+}
+
+.select_box{
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 7px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.select_box:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.select_box:focus{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.info_area{
+	display: flex;
+	justify-content: space-between;
+	margin-left: 50px; margin-right: 50px;
+}
+
+.info_input{
+	width: 200px; height: 100px;
+	padding: 10px 0 14px;
+    position: relative;
+}
+
+.info_title{
+	font-size: 20px; font-weight: 1000;
+	margin-bottom: 10px;
+}
+
+.select_box_info{
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.select_box_info:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.select_box_info:focus{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.date_area{
+	display: flex;
+	justify-content:space-between;
+	margin-left: 50px; margin-right: 50px;
+	margin-top: 25px;
+	
+}
+
+.start_area{
+	display: flex;
+ 	flex-direction: column;
+ 	width: 220px; height: 100px;
+}
+
+.end_area{
+	display: flex;
+	flex-direction: column;
+	width: 220px; height: 100px;
+}
+
+.date_title{
+	font-size: 20px; font-weight: 1000;
+	margin-bottom: 10px;
+}
+
+.date_item{
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.select_date{
+	width: 87px;
+	font-size: 16px;
+	border-bottom: 1px solid #d0d0d0;
+	outline: 0;
+	margin-left: 10px;
+}
+
+.datepicker {
+	z-index: 9999;
+}
+
+/************************************************************/
+
+.date_btn{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px 12px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.date_btn:hover {
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.date_btn:focus {
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.add_btn_box{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.add_box{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.add_box:hover {
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}

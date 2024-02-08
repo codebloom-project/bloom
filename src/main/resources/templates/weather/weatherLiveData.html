@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<ul class="flex center live-weather">
+		<th:block th:each="dto:${livelist}">
+			<div th:if="${dto.category eq 'T1H' }">
+				<span th:if="${dto.category eq 'T1H'}">현재온도 :</span>
+				<span class="live-temp" th:text="${dto.obsrValue}">obsrValue</span>
+				<span th:if="${dto.category eq 'T1H'}">℃</span>
+			</div>
+		</th:block>
+	</ul>
+</html>

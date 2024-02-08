@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+	th:fragment="commonLayout(head)">
+ 
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+<link rel="stylesheet" href="/css/notice/noticesection.css">
+</head>
+
+<body>
+	<main>
+		<section th:fragment="noticesection" id='noticesection'>
+			<a href="/noticemanage">
+				<p>공지사항</p>
+				<div class="flex notice-stitle">
+						<a class="notice-first">제목</a>
+						<span></span>
+						<a class="notice-second">작성일</a>
+					</div>
+				<div th:each="listsection, idx : ${listsection}" th:if="${idx.index} < 5">
+					<div class="flex notice-s">
+						<a th:text="${listsection.title}" class="notice-first">1</a>
+						<span></span>
+						<a th:text="${listsection.updateDate}" class="notice-second">2</a>
+					</div>
+				</div>
+			</a>
+		</section>
+
+	</main>
+</body>
+
+</html>

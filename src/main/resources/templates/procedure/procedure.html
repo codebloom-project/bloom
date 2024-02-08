@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">f.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>과정 관리</title>
+	<link rel="stylesheet" href="/css/procedure/procedure.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/procedure/procedure.js"></script>
+    <style>
+		#listLesson{left:0}
+	</style>
+</head>
+<body>
+<main>
+	<div class="container_procedure">
+		<p class="title-font">
+				과정 관리
+		</p>
+		<div class="content_procedure">
+			<div class="procedure_console">
+				<div class="search_box">
+					<form th:action="@{/procedure}" method="get">
+						<input type="search" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력하세요'" autocomplete="off" class="input_search" name="search">
+						<button type="submit" class="search_button">검색</button>
+					</form>
+				</div>
+				<a href="/procedure_add" class="pr_button">과정 등록</a>
+			</div>
+			<div class="procedure_main"> <!-- 등록된 과정 정보 확인 및 수정 기능 -->
+				<div class="pro_bar">|  <p class="proNo_list">번호</p>  |  <p class="proName_list">과정명</p>  |  <p class="proClass_list">반</p>  |  <p class="proType_list">악기</p>  |  <p class="empName_list">담당강사</p>  |  <p class="proStart_list">개강일</p>  |  <p class="proEnd_list">종강일</p>  |  <p class="edit_btn">수정</p>  |</div>
+				<div class="pro_data" th:each="procedure : ${list}"> <!-- 과정 정보 반복 출력 -->
+					<input type="text" class="proNo" id="proNo" name="proNo" th:value="${procedure.proNo}" readonly>
+					<input type="text" class="proName" id="proName" name="proName" th:value="${procedure.proName}" readonly>
+					<select class="proClass" id="proClass" name="proClass" disabled>
+				        <option th:if="${procedure.proClass == 'hobby class'}" value="hobby class" selected>취미반</option>
+				        <option th:if="${procedure.proClass == 'ee class'}" value="ee class" selected>입시반</option>
+				        <option th:unless="${procedure.proClass == 'hobby class'}" value="hobby class">취미반</option>
+    					<option th:unless="${procedure.proClass == 'ee class'}" value="ee class">입시반</option>
+    				</select>
+					<select class="proType" id="proType" name="proType" disabled>
+					    <option th:if="${procedure.proType == 'guitar'}" value="guitar" selected>기타</option>
+					    <option th:if="${procedure.proType == 'drum'}" value="drum" selected>드럼</option>
+					    <option th:if="${procedure.proType == 'piano'}" value="piano" selected>피아노</option>
+					    <option th:unless="${procedure.proType == 'guitar'}" value="guitar">기타</option>
+					    <option th:unless="${procedure.proType == 'drum'}" value="drum">드럼</option>
+					    <option th:unless="${procedure.proType == 'piano'}" value="piano">피아노</option>
+					</select>
+					<!--<input type="text" class="empName" id="empName" name="empName" th:value="${procedure.empName}" readonly>-->
+					<select class="empName" id="empName" name="empName" disabled>
+				    	<option th:value="${procedure.empName}" th:text="${procedure.empName}" selected></option>
+				    	<option th:each="empName : ${employeeNames}" th:value="${empName}" th:text="${empName}"></option>
+					</select>
+					<input type="text" class="proStart" id="proStart" name="proStart" th:value="${procedure.proStart}" readonly>
+					<input type="text" class="proEnd" id="proEnd" name="proEnd" th:value="${procedure.proEnd}" readonly>
+					<p class="edit"><button type="submit" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
+				</div>
+			</div>
+			<div class="procedure_page_button"> <!-- 페이지네이션 -->
+				<div class="pagging-wrap">
+					<a th:if="${pu.from > 1}" th:href="@{|/procedure?page=${1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="first_page">&lt;&lt;</button>
+			        </a> 
+			        <a th:if="${pu.from > 1}" th:href="@{|/procedure?page=${pu.from-1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="page_down">&lt;</button>
+			        </a> 
+			        <span id="pagging"> 
+			            <a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="@{|/procedure?page=${pno}&search=${keyword != null ? keyword : ''}|}">
+			                <button class="page_btn" th:text="${pno}" th:classappend="${pno == pu.page ? 'focused' : ''}"></button>
+			            </a>
+			        </span> 
+			        <a th:if="${pu.to < pu.tot}" th:href="@{|/procedure?page=${pu.to+1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="page_up">&gt;</button>
+			        </a> 
+			        <a th:href="@{|/procedure?page=${pu.tot}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="last_page">&gt;&gt;</button>
+			        </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>

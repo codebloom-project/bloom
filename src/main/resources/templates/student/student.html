@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<meta charset="UTF-8">
+<title>학생 관리</title>
+	<link rel="stylesheet" href="/css/student/student.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/student/student.js"></script>
+    <style>
+		#listLesson{left:0}
+	</style>
+</head>
+<body>
+<main>
+	<div class="container_student">
+		<p class="title-font">
+				학생 관리
+		</p>
+		<div class="content_student">
+			<div class="student_console">
+				<div class="search_box">
+					<form th:action="@{/student}" method="get">
+						<input type="search" placeholder="검색어 입력" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어 입력'" autocomplete="off" class="input_search" name="search">
+						<button type="submit" class="search_button">검색</button>
+					</form>
+				</div>
+				<button type="submit" class="delete_button" onclick="deleteSelectedStudents()">학생 삭제</button>
+				<a href="/student_add" class="stu_button">학생 등록</a>
+			</div>
+			<div class="student_main"> <!-- 등록된 학생 정보 확인 및 수정 기능 -->
+				<div class="stu_bar">|  <p class="stuNo_list">번호</p>  |  <p class="stuName_list">학생이름</p>  |  <p class="stuPhone_list">연락처</p>  |  <p class="stuBirth_list">생년월일</p>  |  <p class="proName_list">과정명</p>  |  <p class="stuSitu_list">재원상태</p>  |  <p class="edit_btn">수정</p>  |  <p class="delete_list">삭제</p>  |</div>
+				<form id="deleteForm" action="/deleteStudents" method="post">	
+					<div class="stu_data" th:each="student : ${list}">
+						<input type="text" class="stuNo" id="stuNo" name="stuNo" th:value="${student.stuNo}" readonly>
+						<input type="text" class="stuName" id="stuName" name="stuName" th:value="${student.stuName}" readonly>
+						<input type="text" maxlength="11" oninput="validateNumericInput(this);" class="stuPhone" id="stuPhone" name="stuPhone" th:value="${student.stuPhone}" readonly>
+						<input type="text" class="stuBirth" id="stuBirth" name="stuBirth" th:value="${student.stuBirth}" readonly>
+						<select class="proName" id="proName" name="proName" disabled>
+					    	<option th:value="${student.proName}" th:text="${student.proName}" selected></option>
+					    	<option th:each="proName : ${procedureNames}" th:value="${proName}" th:text="${proName}"></option>
+						</select>
+						<select class="stuSitu" id="stuSitu" name="stuSitu" disabled>
+						    <option th:if="${student.stuSitu == '재원중'}" value="재원중" selected>재원중</option>
+						    <option th:if="${student.stuSitu == '재적'}" value="재적" selected>재적</option>
+						    <option th:if="${student.stuSitu == '수료'}" value="수료" selected>수료</option>
+						    <option th:if="${student.stuSitu == '수강포기'}" value="수강포기" selected>수강포기</option>
+						    <option th:unless="${student.stuSitu == '재원중'}" value="재원중">재원중</option>
+						    <option th:unless="${student.stuSitu == '재적'}" value="재적">재적</option>
+						    <option th:unless="${student.stuSitu == '수료'}" value="수료">수료</option>
+						    <option th:unless="${student.stuSitu == '수강포기'}" value="수강포기">수강포기</option>
+						</select>
+						<p class="edit"><button type="button" class="edit_button" onclick="toggleEditMode(this)">수정</button></p>
+						<input type="hidden" name="selectedStudents" class="selectedStudents">
+						<input type="checkbox" class="delete_checkbox">
+					</div>
+				</form>	
+			</div>
+			<div class="student_page_button"> <!-- 페이지네이션 -->
+				<div class="pagging-wrap">
+					<a th:if="${pu.from > 1}" th:href="@{|/student?page=${1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="first_page">&lt;&lt;</button>
+			        </a> 
+			        <a th:if="${pu.from > 1}" th:href="@{|/student?page=${pu.from-1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="page_down">&lt;</button>
+			        </a> 
+			        <span id="pagging"> 
+			            <a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="@{|/student?page=${pno}&search=${keyword != null ? keyword : ''}|}">
+			                <button class="page_btn" th:text="${pno}" th:classappend="${pno == pu.page ? 'focused' : ''}"></button>
+			            </a>
+			        </span> 
+			        <a th:if="${pu.to < pu.tot}" th:href="@{|/student?page=${pu.to+1}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="page_up">&gt;</button>
+			        </a> 
+			        <a th:href="@{|/student?page=${pu.tot}&search=${keyword != null ? keyword : ''}|}">
+			            <button class="last_page">&gt;&gt;</button>
+			        </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>

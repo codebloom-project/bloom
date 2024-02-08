@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/studentattendance/attlist.css">
+
+</head>
+
+<body>
+
+	<main>
+
+		<div class="pro_bar">| <p class="proNo_list">번호</p> | <p class="proName_list">과정명</p>
+			| <p class="proType_list">악기</p> | <p class="empName_list">담당강사</p> | <p class="proStart_list">개강일</p> | <p
+				class="proEnd_list">종강일</p> | </div>
+
+		<div class="pro_data" th:each="procedure : ${procedures}"> <!-- 과정 정보 반복 출력 -->
+			<a th:href="@{|/procedure/${procedure.proNo}|}">
+				<input type="text" class="proNo" id="proNo" name="proNo" th:value="${procedure.proNo}" readonly>
+				<input type="text" class="proName" id="proName" name="proName" th:value="${procedure.proName}" readonly>
+				<input type="text" class="proType" id="proType" name="protyproTypepe" th:value="${procedure.proType}"
+					readonly>
+					<input type="text" class="empName" id="empName" name="empName" th:value="${procedure.employeeEntity.empName}" readonly>
+				<input type="text" class="proStart" id="proStart" name="proStart" th:value="${procedure.proStart}"
+					readonly>
+				<input type="text" class="proEnd" id="proEnd" name="proEnd" th:value="${procedure.proEnd}" readonly>
+
+
+			</a>
+		</div>
+	</main>
+</body>
+
+</html>

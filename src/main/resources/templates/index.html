@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:replace="~{schedule/calendar::head}" />
+<style>
+	#calendar{height:700px;}
+</style>
+<link rel="stylesheet" href="/css/index/index.css">
+</head>
+<main>
+	<th:block th:replace="~{schedule/calendar::calendar}" />
+	<section class="flex between summary">
+		<!--<th:block th:replace="~{}" /> 여기에 공지사항-->
+		<!--<th:block th:replace="~{}" /> 여기에 클래스현황-->
+		<th:block th:replace="~{notice/noticesection::noticesection}" />
+		<th:block th:replace="~{procedure/procedure_popup::procedure-pop}" />
+		<th:block th:replace="~{commute/commute::commute}" />
+	</section>
+	<div id="eventList" style="display: none;">
+		
+	</div>
+	<section>
+		<p>CICD 수정테스트입니다</p>
+	</section>
+</main>
+</html>

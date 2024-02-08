@@ -1,0 +1,158 @@
+@charset "EUC-KR";
+.list {
+    width: 18%;
+    background-color: #f8f8fa;
+    border-radius: 10px;
+    height: 85vh;
+    padding: 10px;
+}
+
+.list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: #C9B6E4;
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: #ebe2f6;
+}
+
+
+#calendar{
+	width:80% !important;
+}
+
+li .button{
+	padding: 5px 20px;
+	border-color: #C9B6E4;
+}
+.listtitle {
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 10px;
+    background-color: #BE9FE1;
+    font-size: 20px;
+    font-weight: bold;
+}
+ul{
+	text-align: center;
+}
+li{
+	padding: 10px 0;
+	border-bottom: 1px solid #888;
+}
+li div{
+	padding: 15px 0;
+}
+li button{
+	margin-top: 10px;
+}
+li p{
+	padding: 5px 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.modal-content {
+  border-radius: 7px;
+  background-color: #ffffff;
+  margin: 15% auto;
+  padding: 20px 5px;
+  border: 1px solid #888;
+  width: 30%;
+  height: 520px;
+}
+.modal-content div{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.close:hover {
+  color: black;
+}
+
+#modalTitle{
+	padding-top: 30px;
+}
+.managerTitle{
+	background-image: linear-gradient(to top, #BE9FE1, #E1CCEC);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 8px;
+	font-weight: bold;
+	padding: 0 7px;
+	margin-bottom: 20px;
+}
+.inputTitle{
+	width: 99%;
+	height: 30px;
+	font-size: 16px;
+}
+input[type=datetime-local]{
+	width: 100%;
+	height: 25px;
+	margin: 10px 0;
+}
+.inputContent{
+	width: 99%;
+	height: 50%;
+}
+input[type=text]{
+	margin: 10px 0;
+}
+#modalContentInput{
+	margin: 10px 0;
+	resize: none;
+	padding-top: 3px;
+	padding-left: 3px;
+}
+.modal-content input,textarea{
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+.button {
+  background-color: #673AB7;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #5A2E9A;
+}
+.pagearea{
+	margin-top: 10px;
+	padding: 20px;
+}
+.page{
+	margin: 0 10px;
+	padding: 7px 10px;
+	background-color: #E1CCEC;
+	border-radius: 100%;
+	font-weight: bold;
+}

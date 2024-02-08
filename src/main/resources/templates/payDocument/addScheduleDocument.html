@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listPayDoc{left:0}
+</style>
+<link rel="stylesheet" href="/css/payDocument/addDocument.css">
+<script type="text/javascript" src="/js/payDocument/addDocument.js"></script>
+</head>
+<body>
+	<main>
+		<section class="pay-doc">
+			<p class="title-font">일정결재문서 등록</p>
+			<form class="document" action="/add-schedule" method="post">
+				<div class="pay-input flex col-centter">
+					<p>보고날짜 :</p>
+					<input name="sdocMake" type="date" id="payDate" onchange="printPayDate()">
+				</div>
+				<div class="pay-input flex col-centter">
+					<p>보 고 자 :</p>
+					<input th:value="${#authentication.principal.empName}" name="sdocName" type="text" id="payName" readonly>
+				</div>
+				<div class="pay-input flex col-centter">
+					<p>구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;분 :</p>
+					<select name="sdocCate" id="payCate" onchange="printPayCate()">
+						<option>===선택===</option>
+						<option value="휴가">휴가</option>
+						<option value="워크숍">워크숍</option>
+						<option value="출장">출장</option>
+					</select>
+				</div>
+				<div class="pay-input flex col-centter">
+					<p>시 작 일 :</p>
+					<input name="sdocStart" type="date" id="payStartDate" onchange="printPayStartDate()">
+				</div>
+				<div class="pay-input flex col-centter">
+					<p>종 료 일 :</p>
+					<input name="sdocEnd" type="date" id="payEndDate" onchange="printPayEndDate()">
+				</div>
+				<div class="pay-input">
+					<p>보고내용</p>
+					<textarea name="sdocContent" placeholder="보고내용을 입력해주세요" id="payContent" onkeyup="printPayContent()"></textarea>
+				</div>
+				<div class="doc-btn flex end">
+					<div class="flex col-centter center" onclick="openPreview()">미리보기</div>
+					<span></span>
+					<button>제출하기</button>
+				</div>
+			</form>
+			<section class="preview" id="preview">
+				<div class="pre-page">
+					<div class="pre-title flex between">
+						<div></div>
+						<p>결재 보고서</p>
+						<div class="preview-close" onclick="closePreview()">
+							<img src="/img/common/close.svg">
+						</div>
+					</div>
+					<table>
+						<tr class="pre-height">
+							<th class="pre-left">보고날짜</th>
+							<td class="pre-right" colspan="3" id="docRresultDate"></td>
+						</tr>
+						<tr class="pre-height pre-two">
+							<th class="pre-left">보 고 자</th>
+							<td class="pre-right" th:text="${#authentication.principal.empName}" id="docRresultName"></td>
+							<th class="pre-left">구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;분</th>
+							<td class="pre-right" id="docRresultCate"></td>
+						</tr>
+						<tr class="pre-height pre-two">
+							<th class="pre-left">시 작 일</th>
+							<td class="pre-right" id="docRresultStartDate"></td>
+							<th class="pre-left">종 료 일</th>
+							<td class="pre-right" id="docRresultEndDate"></td>
+						</tr>
+						<tr>
+							<th class="pre-height" colspan="4">보고내용</th>
+						</tr>
+						<tr class="pre-content">
+							<td colspan="4" id="docRresultContent"></td>
+						</tr>
+					</table>
+				</div>
+				
+			</section>
+		</section>
+		<script>
+			var today= new Date().toISOString().substring(0, 10);
+			document.getElementById('payDate').value = today;
+			document.getElementById('docRresultDate').innerText=today;
+		</script>
+	</main>
+</body>
+</html>

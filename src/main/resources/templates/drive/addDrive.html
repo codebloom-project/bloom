@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listDrive{left:0}
+	#addFile{width:80%}
+	.big{width:200px !important}
+</style>
+<link rel="stylesheet" href="/css/payDocument/addDocument.css">
+</head>
+<body>
+	<main>
+		<section class="pay-doc">
+			<p class="title-font">공유문서 등록</p>
+			<form class="document" action="/drive" method="post" enctype="multipart/form-data" >
+				<div class="pay-input flex col-centter">
+					<p>작 성 자 :</p>
+					<input th:value="${#authentication.principal.empName}" name="driveName" type="text" readonly>
+				</div>
+				
+				<div class="pay-input flex col-centter">
+					<p>파일제목 :</p>
+					<input type="text" name="driveTitle" placeholder="ex) 공유문서" />
+				</div>
+				<div class="pay-input flex col-centter">
+					<p>첨부파일 :</p>
+					<input id="addFile" type="file" name="driveFile" accept="*" onchange="uploadedFile(this)"/>
+					<input type="hidden" class="bucketKey" name="bucketKey">
+					<input type="hidden" class="orgName" name="orgName">
+					<input type="hidden" class="newName" name="newName">
+				</div>
+				<div class="pay-input">
+					<p class="big">첨부파일 설명</p>
+					<textarea name="driveContent" placeholder="첨부파일설명을 입력해주세요" id="payContent"></textarea>
+				</div>
+				
+				<div class="doc-btn flex end">
+					<button type="submit">제출하기</button>
+				</div>
+			</form>
+		</section>
+		<script>
+			function uploadedFile(element) {
+				//console.log($(element)[0].files[0]);
+				var formData = new FormData();
+				formData.append("driveFile", $(element)[0].files[0]);
+				$.ajax({
+					url: "/files-temp-upload",
+					data: formData,
+					type: "post",
+					contentType: false,
+					processData: false,
+					success: function (map) {
+						//$(element).parents(".btn-file")
+						$(element).siblings(".bucketKey").val(map.bucketKey);
+						$(element).siblings(".orgName").val(map.orgName);
+						$(element).siblings(".newName").val(map.newName);
+					}
+				});
+			}
+		</script>
+	</main>
+</body>
+</html>

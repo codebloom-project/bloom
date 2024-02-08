@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<link rel="stylesheet" href="/css/schedule/schedule.css">
+	<script src="/js/schedule/schedule.js"></script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#listCalendar{left:0}
+	</style>
+</head>
+
+<body>
+	<main>
+		<p class="title-font">일정 추가</p>
+		<br>
+		<form action="/schedule" method="post">
+			<div class="mainarea">
+				<table>
+					<tr>
+						<th>카테고리</th>
+						<td>
+							<input type="checkbox" id="event" name="categori" value="false">
+							<label for="event">일정</label>
+							<input type="checkbox" id="procedure" onclick="procedure1()" name="categori" value="true">
+							<label for="procedure">과정</label>
+						</td>
+					</tr>
+					<tr id="procedureNone">
+						<th>과정 상세</th>
+						<td>
+							<input type="checkbox" value="기타" id="1">
+							<label for="1">기타</label>
+							<input type="checkbox" value="드럼" id="2">
+							<label for="2">드럼</label>
+						</td>
+					</tr>
+					<tr>
+						<th>기간</th>
+						<td>
+							<input type="datetime-local" name="start"> ~ <input type="datetime-local" name="end">
+						</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td class="textarea">
+							<input type="text" class="title" name="title"></input>
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td class="textarea">
+							<textarea class="contents" name="content"></textarea>
+						</td>
+					</tr>
+				</table>
+				<div class="flex button-container">
+					<button type="submit" onclick="log()">저장</input>
+					<button>취소</button>
+				</div>
+			</div>
+		</form>
+	</main>
+</body>
+
+</html>

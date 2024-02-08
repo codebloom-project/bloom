@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>과정 현황</title>
+	<link rel="stylesheet" href="/css/procedure/procedure_popup.css">
+	<link rel="stylesheet" href="/css/common/reset.css">
+</head>
+<body>
+	<section th:fragment="procedure-pop" id='procedure-pop'>
+		<div class="container_procedure">
+			<a href="/procedure">
+				<div class="content_procedure">
+					<div class="procedure_main">
+						<div class="pro_bar"><p class="proName_list">과정현황</p></div>
+						<div class="pro_data" th:each="procedure : ${top5Procedures}" th:limit="5"> <!--proName 5행 출력-->
+							<input type="text" class="proName pro-pop" id="proName" name="proName" th:value="${procedure.proName}" readonly style="outline: none;">
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</section>
+</body>
+</html>

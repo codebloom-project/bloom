@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+.sign-body {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	font-family: 'NanumSquareNeo', sans-serif;
+}
+
+.logo-wrap {
+	margin-right: 50px;
+}
+
+.logo-wrap > img {
+	width: 480px;
+}
+
+.sign-wrap {
+	max-width: 450px;
+	margin-left: 50px;
+	border-radius: 1rem;
+	background-color: #F5F5F5;
+	box-shadow: 0 10px 20px #C0C0C0;
+}
+
+.sign-content > form {
+	display: block;
+}
+
+.sign-head {
+	padding: 40px 0 20px 0;
+	font-size: 32px;
+	color: #52057B;
+}
+
+.sign-input {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 15px;
+}
+
+.sign-ico {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	transform: translate(70%, -20%);
+}
+
+.dept-ico {
+	width: 24px;
+	height: 24px;
+	padding-left: 15px;
+}
+
+.companyMail {
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translate(-125%, 0);
+	font-size: 14px;
+	color: #A9A9A9;
+}
+
+.validation-message {
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.validation-message > p {
+	padding: 0 0 5px 5px;
+	font-family: 'NanumSquareNeoBold', sans-serif;
+	font-size: 12px;
+	color: #FF3F34;
+}
+
+.sign-input-dept {
+	width: 400px;
+	height: 50px;
+	border: 2px solid #F5F5F5;
+	border-radius: 0.5rem;
+	background-color: #FFF;
+	font-size: 14px;
+}
+
+.sign-input-dept > label {
+	margin-left: 11px;
+	display: flex;
+	align-items: center;
+	font-family: 'NanumSquareNeoBold', sans-serif;
+	color: #A9A9A9;
+}
+
+.sign-input-dept > label > input {
+	width: 15px;
+	height: 15px;
+	margin: 0 0 0 3px;
+}
+
+.sign-find-account {
+	width: 425px;
+	padding-top: 10px;
+}
+
+.sign-btn-1 {
+	padding-top: 40px;
+}
+
+.sign-btn-1 > button:hover {
+	background-color: #892CDC;
+}
+
+.sign-btn-2 {
+	padding: 20px 0;
+}
+
+.sign-btn-2 > * {
+	height: 15px;
+	line-height: 15px;
+	font-size: 12px;
+	color: #52057B;
+}
+
+.text-btn-1 {
+	padding-left: 5px;
+	background-color: transparent;
+	color: #BC6FF1;
+	cursor: pointer;
+	transition: 0.15s;
+}
+
+.text-btn-2 {
+	height: 15px;
+	line-height: 15px;
+	margin: 0;
+	background-color: transparent;
+	font-size: 12px;
+	color: #909090;
+	cursor: pointer;
+	transition: 0.15s;
+}
+
+.text-btn-1:hover,
+.text-btn-2:hover {
+	color: #52057B;
+}
+
+.find-id-head {
+	width: 215px;
+	height: 40px;
+	margin-left: 10px;
+	border-radius: 10px 10px 0 0;
+	background-color: #E9E9E9;
+	font-size: 20px;
+	color: #52057B;
+	cursor: pointer;
+}
+
+.validation-passed {
+	border: 2px solid #A2CA48;
+}
+
+.validation-failed {
+	border: 2px solid #FF3F34;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<ul class="flex">
+		<th:block th:each="dto:${poplist}">
+			<div th:if="${dto.category eq 'POP' and 
+			dto.fcstTime eq #temporals.format(#temporals.createNow().plusHours(1),'HH00') and 
+			dto.fcstDate eq #temporals.format(localDateTime,'yyyyMMdd')}">
+				<div th:if="${dto.fcstValue <= '30'}">
+					<img class="weather-img" src="/img/weather/sunny.png">
+					<p class="sunny">맑음</p>
+				</div>
+				<div th:if="${dto.fcstValue > '30' and dto.fcstValue < '70'}">
+					<img class="weather-img" src="/img/weather/cloud.png">
+					<p class="cloudy">흐림</p>
+				</div>
+				<div th:if="${dto.fcstValue >= '70'}">
+					<img class="weather-img" src="/img/weather/rain.png">
+					<p class="rainy">비</p>
+				</div>
+			</div>
+		</th:block>
+	</ul>
+</html>

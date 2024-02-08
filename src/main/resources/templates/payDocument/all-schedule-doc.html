@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listPayDoc{left:0}
+</style>
+<link rel="stylesheet" href="/css/payDocument/user-document.css">
+<link rel="stylesheet" href="/css/payDocument/all-document.css">
+</head>
+<body>
+	<main>
+		<p class="title-font">결재문서</p>
+		<div class="flex center pay-tap">
+			<a href="/all-schedule-doc"><div id="sdocTap">일정결재문서</div></a>
+			<span></span>
+			<a href="/all-lesson-doc"><div id="lessonTap">강의개설결재문서</div></a>
+		</div>
+		<section class="sdoc sdoc-view">
+			<div class="flex between sdoc_title">
+				<p class="small">번호</p>
+				<p class="large">기안자</p>
+				<p class="large">기안날짜</p>
+				<p class="small">종류</p>
+				<p class="large">결재현황</p>
+				<p class="small">결재</p>
+			</div>
+			<div class="flex between sdoc_info" th:each="schedule:${scheduleList}">
+				<p class="small" th:text="${schedule.sdocNo}"></p>
+				<p class="large" th:text="${schedule.sdocName}"></p>
+				<p class="large" th:text="${schedule.sdocMake}"></p>
+				<p class="small" th:text="${schedule.sdocCate}"></p>
+				<p class="large" th:text="${schedule.sdocCurrent}"></p>
+				<div class="small pay-btn">
+					<button onclick="updateSdoc()">결제하기</button>
+				</div>
+			</div>
+		</section>
+		<section class="sdoc sdoc-update" style="display:none;">
+			<div class="flex between sdoc_title">
+				<p class="small">번호</p>
+				<p class="large">기안자</p>
+				<p class="large">기안날짜</p>
+				<p class="small">종류</p>
+				<p class="large">결재현황</p>
+				<p class="small">결재</p>
+			</div>
+			<form sec:authorize="isAuthenticated()" th:each="schedule:${scheduleList}" th:action="|/all-schedule-doc/${schedule.sdocNo}|" method="post">
+				<div id="sdoc-update" class="flex between sdoc_info" >
+					<p class="small" th:text="${schedule.sdocNo}"></p>
+					<p class="large" th:text="${schedule.sdocName}"></p>
+					<p class="large" th:text="${schedule.sdocMake}"></p>
+					<p class="small" th:text="${schedule.sdocCate}"></p>
+					<select class="large" name="sdocCurrent">
+						<option value="결재대기">결재대기</option>
+						<option value="승인">승인</option>
+						<option value="반려">반려</option>
+						<option value="보류">보류</option>
+					</select>
+					<div class="small pay-btn-update flex between">
+						<input type="hidden" name="sdocNo" th:value="${schedule.sdocNo}">
+						<input type="hidden" name="_method" value="put">
+						<button type="submit">완료</button>
+						<button type="button" onclick="cancelSdoc()">취소</button>
+					</div>
+				</div>
+			</form>
+		</section>
+		<div class="pagging-wrap">
+			<a th:if="${pu.from>1}" th:href="|/all-schedule-doc?page=${1}|">
+				<button>&LT;&LT;</button>
+			</a>
+			<a th:if="${pu.from>1}" th:href="|/all-schedule-doc?page=${pu.from-1}|">
+				<button>&LT;</button>
+			</a>
+			<span id="pagging">
+				<a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="|/all-schedule-doc?page=${pno}|">
+					<button th:text="${pno}"></button>
+				</a>
+			</span>
+			<a th:if="${pu.to < pu.tot}" th:href="|/all-schedule-doc?page=${pu.to+1}|">
+				<button>&GT;</button>
+			</a>
+			<a th:if="${pu.to < pu.tot}" th:href="|/all-schedule-doc?page=${pu.tot}|">
+				<button>&GT;&GT;</button>
+			</a>
+		</div>
+		<script th:inline="javascript">
+			var page=/*[[${param.page}]]*/null;
+			var pageLimit=/*[[${pu.pageLimit}]]*/null;
+			if(page==null) page="1";
+			//console.log(page);
+			var idx=(parseInt(page)-1)%pageLimit;
+			//const element = document.getElementById("pagging");
+			//jquery
+			//$(".btn-page").eq(idx).addClass("target");
+			//vanila js
+			var elements = document.querySelectorAll(".btn-page");
+			elements[idx].classList.add("target");
+			function updateSdoc(){
+				//document.getElementById('detail-view').style.display='none';
+				const element = document.querySelector(".sdoc-view");
+				element.style.display="none";
+				const updateView = document.querySelector(".sdoc-update");
+				updateView.style.display="block";
+			}
+			function cancelSdoc(){
+				const element = document.querySelector(".sdoc-view");
+				element.style.display="block";
+				const updateView = document.querySelector(".sdoc-update");
+				updateView.style.display="none";
+			}
+		</script>
+	</main>
+</body>
+</html>

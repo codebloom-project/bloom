@@ -1,0 +1,371 @@
+@charset "UTF-8";
+
+button{
+	cursor: pointer;
+}
+
+.container_student{
+	box-sizing: border-box; user-select: none !important;
+}
+
+.content_student{
+	width: 905px;
+}
+
+/************************************************************/
+
+.student_console{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 5px 10px 10px;
+}
+
+.input_search{
+	width: 155px;
+	padding: 8px 0 8px 0;
+	font-size: 15px;
+	outline: 0;
+  	border: 0px solid silver;
+  	border-bottom: 1px solid #ebebeb;
+}
+
+.input_search:hover{
+	border-bottom: 1px solid #9B51E0; 
+}
+
+.input_search:focus{
+	border-bottom: 1px solid #9B51E0; 
+}
+
+.search_button{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.search_button:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.delete_button{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 485px;
+    background-color: white;
+}
+
+.delete_button:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.stu_button{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+}
+
+.stu_button:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+/************************************************************/
+
+.student_main{
+	border: 2px solid #BE9FE1;
+	box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.stu_bar{
+	background-color: #E1CCEC;
+	border-radius: 6px 6px 0 0;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 3px;
+}
+
+.stuNo_list{
+	padding: 0 15px;
+}
+
+.stuName_list{
+	padding: 0 15px;
+}
+
+.stuPhone_list{
+	padding: 0 45px;
+}
+
+.stuBirth_list{
+	padding: 0 35px;
+}
+
+.stuSitu_list{
+	padding: 0 15px;
+}
+
+.proName_list{
+	padding: 0 80px;
+}
+
+.edit_btn{
+	padding: 0 15px;
+}
+
+.delete_list{
+	padding: 0 15px;
+}
+
+.stu_data{
+	background-color: #F1F1F6;
+	display: flex;
+	justify-content: center;
+	padding: 10px 0px;
+	border-bottom: 1px solid #cccccc;
+	outline: 0;
+}
+
+.stu_data:last-child{
+	border-radius: 0 0 6px 6px;
+}
+
+input{
+	outline: 0;
+	background: none;
+	text-align: center;
+}
+
+.stuNo{
+	width: 60px;
+	padding-right: 20px;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+}
+
+.stuName{
+	width: 100px;
+	padding-right: 18px;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+	
+}
+
+.stuPhone{
+	width: 130px;
+	padding-right: 8px;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+}
+
+.stuBirth{
+	width: 130px;
+	padding-left: 15px;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+}
+
+.proName{
+	width: 220px;
+	padding-left: 33px;
+	background: none;
+	color: black;
+	text-align: center;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+	
+}
+
+.stuSitu{
+	width: 90px;
+	padding-left: 15px;
+	background: none;
+	color: black;
+	text-align: center;
+	box-sizing: border-box;
+  	border: 0px solid silver;
+}
+
+.edit{
+	padding-left: 20px;
+	padding-right: 30px;
+}
+
+.edit_button{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    
+    background-color: white;
+}
+
+.edit_button:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.delete_checkbox{
+	margin-right: 13px;
+}
+
+/************************************************************/
+
+.student_page_button{
+	display: flex;
+	justify-content: center;
+	padding-top: 40px;
+}
+
+.pagging-wrap{
+	width: 800px;
+	display: flex;
+	justify-content: center;
+}
+
+.first_page{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.first_page:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+
+.page_down{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+}
+
+.page_down:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.btn_form{
+	display: flex;
+	justify-content: space-between;
+	width: 50px;
+}
+
+.page_btn{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+    margin-left: 10px;
+}
+
+.page_btn:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+
+
+}
+
+.focused{
+	border: 1px solid #9B51E0;
+    outline: 3px solid #F8E4FF;
+}
+
+.page_up{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+    margin-left: 10px;
+}
+
+.page_up:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
+.last_page{
+	border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: white;
+    margin-left: 10px;
+}
+
+.last_page:hover{
+	border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+

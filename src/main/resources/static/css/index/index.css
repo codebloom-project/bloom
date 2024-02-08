@@ -1,0 +1,59 @@
+@charset "UTF-8";
+.summary section{
+	width:25%;
+	padding: 20px;
+	margin-top: 20px;
+}
+#commute, #noticesection, #procedure-pop{
+	text-align: center;
+	border: 2px solid #C9B6E4;
+	border-radius: 25px;
+}
+#commute span{
+	width:20px;
+}
+#commute p, #noticesection p, #procedure-pop p{
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+#commute h3{
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color:#8965A2;
+}
+#commute button{
+	width:90px;
+	height:50px;
+	font-size: 1.3rem;
+	font-weight: bold;
+	background-color: #DDCAE2;
+	border: 1px solid #DDCAE2;
+}
+#noticesection tbody{
+	height:100%;
+}
+#noticesection .notice-s{
+	margin-bottom: 5px;
+}
+#noticesection .notice-stitle{
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#noticesection span{
+	display: block;
+	width:20px;
+}
+.notice-first{
+	width:30%;
+}
+.notice-second{
+	width:70%;
+}
+.pro-pop{
+	outline: none;
+	margin-bottom: 5px;
+	border: none;
+	font-size: 1rem;
+}

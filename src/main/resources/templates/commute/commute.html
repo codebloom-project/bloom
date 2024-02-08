@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+	th:fragment="commonLayout(head)">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section th:fragment="commute" id='commute'>
+		<p>출퇴근</p>
+		<div>
+			<h3 class="clock">00:00:00</h3>
+		</div>
+		<div class="flex center">
+			<form action="/today/gtw" method="post">
+	        	<button th:attr="disabled=${isGtw}? 'disabled' : null" id="gtw-button" type="submit" onclick="gtw()">출근</button>
+	        </form>
+	        <span></span>
+	        <form action="/today/gow" method="post">
+				<input type="hidden" name="_method" value="put">
+	        <button th:attr="disabled=${isGow}? 'disabled' : null" id="gow-button" onclick="gow()"} >퇴근</button>
+	        </form>
+	    </div>
+	    <div id="commute-info"></div>
+	    <script type="text/javascript" src="/js/commute/commute.js"></script>
+	</section>
+</body>
+</html>

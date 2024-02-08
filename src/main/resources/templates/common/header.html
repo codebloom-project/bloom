@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<header>
+		<h1>헤더영역</h1>
+		<section class="flex">
+			<div class="icon-tap">
+				<div class="icon" onclick="calendar()">
+					<div>
+						<img src="/img/common/calendar.svg">
+					</div>
+					<p>일정</p>
+				</div>
+				<div class="icon" onclick="board()">
+					<div>
+						<img src="/img/common/board.svg">
+					</div>
+					<p>게시판</p>
+				</div>
+				<div class="icon" onclick="payDoc()">
+					<div>
+						<img src="/img/common/payDocument.svg">
+					</div>
+					<p>결재</p>
+				</div>
+				<div class="icon" onclick="work()">
+					<div>
+						<img src="/img/common/work.svg">
+					</div>
+					<p>사원</p>
+				</div>
+				<div class="icon" onclick="lesson()">
+					<div>
+						<img src="/img/common/lesson.svg">
+					</div>
+					<p>수업</p>
+				</div>
+				<div class="icon" onclick="drive()">
+					<div>
+						<img src="/img/common/drive.svg">
+					</div>
+					<p>드라이브</p>
+				</div>
+			</div>
+			<div class="info-tap">
+				<div class="info">
+					<div>
+						<a href="/"><img src="/img/common/bloomLogo.png"></a>
+					</div>
+					<th:block sec:authorize="isAuthenticated()">
+						<div class="user-text">
+							<a sec:authentication="principal.empName">이름</a>
+							<a><span sec:authentication="principal.empRole"></span>님</a>
+							<a> 어서오세요</a>
+							<a href="/logout"><button class="logout-btn">로그아웃</button></a>
+						</div>
+					</th:block>
+				</div>
+				<div class="info-list" id="list"></div>
+				<div class="info-list" id="listCalendar">
+					<div><a href="/schedule">일정 등록</a></div>
+					<div><a href="/schedule-manager">일정 관리</a></div>
+				</div>
+				<div class="info-list" id="listNotice">
+					<div><a href="/notice/noticewrite">공지사항 등록</a></div>
+					<div><a href="/noticemanage">공지사항 관리</a></div>
+				</div>
+				<div class="info-list" id="listPayDoc">
+					<div><a onclick="openAddDoc()">결재문서 등록 ▼</a></div>
+					<div class="doc-list" id="addDocList">
+						<p><a href="/addSceDoc">일정결재 문서</a></p>
+						<p><a href="/addLesDoc">강의개설 문서</a></p>
+					</div>
+					<div><a th:href="|/schedule-doc/${#authentication.principal.empNo}|">결재문서 현황</a></div>
+					<div th:if="${#authentication.principal.empRole} == 원장"><a href="/all-schedule-doc">결재문서 관리</a></div>
+				</div>
+				<div class="info-list" id="listWork">
+					<div><a href="/employee">사원 관리</a></div>
+				</div>
+				<div class="info-list" id="listLesson">
+					<div><a href="/procedure_add">과정 등록</a></div>
+					<div><a href="/procedure">과정 관리</a></div>
+					<div><a href="/student_add">학생 등록</a></div>
+					<div><a href="/student">학생 관리</a></div>
+				</div>
+				<div class="info-list" id="listDrive">
+					<div><a href="/addDrive">공유문서 등록</a></div>
+					<div><a href="/drive-list">공유문서 목록</a></div>
+				</div>
+			</div>
+		</section>
+	</header>
+</html>

@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+main {
+	padding: 0 !important;
+}
+
+.employee-email-head-container {
+	height: 80px;
+	border-bottom: 1px solid #BC6FF1;
+	background-color: #E5D1FA;
+}
+
+.employee-email-menu {
+	width: 390px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.employee-email-menu > span {
+	font-size: 18px;
+	color: #FFF;
+}
+
+.mail-ico {
+	width: 24px;
+	height: 24px;
+	padding-bottom: 5px;
+	background-position: center;
+	background-size: contain;
+}
+
+.employee-email-composition {
+	width: 150px;
+	height: 50px;
+	margin: 15px;
+	border-radius: 1rem;
+	background-color: #892CDC;
+	cursor: pointer;
+}
+
+.employee-email-composition > span {
+	padding-left: 10px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #FFF;
+}
+
+.employee-email-search {
+	position: relative;
+}
+
+.employee-email-search > img {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 50%;
+	left: 28px;
+	transform: translate(0, -50%);
+}
+
+.employee-email-search > input {
+	width: 500px;
+	height: 50px;
+	margin: 15px 0 15px 15px;
+	border-radius: 1rem;
+	padding-left: 50px;
+	background-color: #F1F1F6;
+	font-size: 16px;
+}
+
+.employee-email-search > input::placeholder {
+	font-size: 16px;
+}
+
+.employee-email-list-head {
+	border-top: 2px solid #DCDCDC;
+	border-bottom: 2px solid #DCDCDC;
+}
+
+.employee-email-list-head > span {
+	padding: 10px 0;
+}
+
+.employee-email-list {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.focus {
+	font-weight: 600;
+	background-color: #BC6FF1;
+}

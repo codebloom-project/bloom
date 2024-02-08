@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.bloom.mybatis.mapper.EmployeeMapper">
+
+<!-- 전체 사원 목록 -->
+<select id="findAll" resultType="com.green.bloom.domain.dto.EmployeeDTO">
+	select * from employee
+</select>
+
+<!-- 사원 선택 -->
+<select id="employeeDetails" resultType="com.green.bloom.domain.dto.EmployeeDTO">
+	select * from employee
+	where emp_no = #{empNo}
+</select>
+
+<!-- 사원 수정 -->
+<update id="employeeUpdate">
+	update employee set
+	emp_dept = #{empDept},
+	emp_name = #{empName},
+	emp_birth = #{empBirth},
+	emp_phone = #{empPhone},
+	emp_hire_date = #{empHireDate}
+	where emp_no = #{empNo}
+</update>
+</mapper>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<meta charset="UTF-8">
+<title>학생 등록</title>
+	<link rel="stylesheet" href="/css/student/student_add.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="/js/student/student_add.js"></script>
+    <style>
+		#listLesson{left:0}
+	</style>
+</head>
+<body>
+<main>
+	<div class="container_stuadd">
+		<p class="title-font">
+				학생 등록
+		</p>
+		<div class="content_stuadd">
+			
+			<form name="stuAddForm" action="/student_add" method="post" onsubmit="return validateSubmit()">
+				<div class="main_area">
+					<div class="student_area">
+						<div class="student_input">
+							<div class="input_title">수강생 이름</div>
+							<div class="input_item">
+								<input type="text" placeholder="수강생 이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '수강생 이름을 입력해주세요.', validateStuName();" autocomplete="off" class="input_txt" name="stuName">
+							</div>
+						</div>
+						<div class="stu_phone_input">
+							<div class="input_title">연락처</div>
+							<div class="input_area">
+								<div class="input_item">
+								    <input type="text" maxlength="11" oninput="validateNumericInput(this);" class="stu_phone_input_txt" name="stuPhone" onblur="combinePhoneNumber();">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="stu_area">
+						<div class="birth_area">
+							<div class="date_title">생년월일</div>
+							<div class="date_item">
+								<select class="select_box" id="birth-year" onchange="blurSelect(this); combineBirthDay();" name="stuBirthPart1">
+								  <option disabled selected>출생 연도</option>
+								</select>
+								<select class="select_box" id="birth-month" onchange="blurSelect(this); combineBirthDay();" name="stuBirthPart2">
+								  <option disabled selected>월</option>
+								</select>
+								<select class="select_box" id="birth-day" onchange="blurSelect(this); combineBirthDay();" name="stuBirthPart3">
+								  <option disabled selected>일</option>
+								</select>
+								<input type="hidden" name="stuBirth" id="fullBirthDay">
+							</div>
+						</div>
+						<div class="pro_input">
+							<div class="input_title">수강 과정</div>
+							<select  class="select_box" name="proName" id="proNameSelect" onchange="validateProName(); blurSelect(this);">
+		        				<option value="" selected disabled>수강 과정을 선택해주세요.</option>
+							</select>
+						</div>
+					</div>
+					<div class="add_btn_box">
+						<input type="submit" value="등록 하기" class="add_box"></input>
+					</div>
+				</div>
+			</form>
+		</div>	
+	</div>
+</main>
+</body>
+</html>

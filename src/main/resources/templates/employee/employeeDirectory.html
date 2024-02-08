@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+		<link rel="stylesheet" href="css/sign/common.css">
+		<link rel="stylesheet" href="css/employee/employeeDirectory.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="js/employee/employeeDirectory.js"></script>
+		<style>
+			#listWork{left:0}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="employee-directory-container flex space-between">
+				
+				<!--Employee List Container-->
+				<div id="employee-list-container" class="employee-list-container">
+					<div class="employee-list-head flex center-2">
+						<span>부서</span>
+						<span class="employee-list-colspan">이름</span>
+						<span>직급</span>
+						<span class="employee-list-colspan">입사일</span>
+						<span>근태</span>
+						<span>고용 상태</span>
+					</div>
+					<div th:each="employeeList : ${employeeList}" class="employee-list flex center-2">
+						<span th:text="|[${employeeList.empDept}]|">부서</span>
+						<span class="employee-list-colspan" th:text="${employeeList.empName}">이름</span>
+						<span th:text="${employeeList.empRole}">직급</span>
+						<span class="employee-list-colspan" th:text="${#temporals.format(employeeList.empHireDate, 'yyyy-MM-dd')}">입사일</span>
+						<span>근태</span>
+						<span th:text="${employeeList.empStatus}">고용 상태</span>
+						<input type="hidden" class="employee-no" th:value="${employeeList.empNo}">
+					</div>
+				</div>
+				
+				<!--Employee Details Container-->
+				<div id="employee-details-container" class="employee-details-container flex center-1 center-2">
+					
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

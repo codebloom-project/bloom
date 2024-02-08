@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+ th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/common/reset.css">
+	<link rel="stylesheet" href="/css/notice/notice.css">
+</head>
+
+<body>
+	<main>
+		<th:block sec:authorize="isAuthenticated()">
+			<p th:text="${#authentication.principal.empNo}"></p>
+		</th:block>
+		<div>
+			<div>
+				<div>
+					<p class="title-font">공지사항 목록</p>
+				</div>
+				<div>
+					<div class="bar">
+						<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select>
+
+						<form action="/noticelist" method="get">
+							<label for="keyword" style="display: none;">Enter keyword</label>
+							<input type="search" id="keyword" name="${keyword}">
+							<button type="submit" class="submit">Search</button>
+						</form>
+					</div>
+				</div>
+				<div class="wrapper">
+					<table>
+						<colgroup>
+							<col style="width:100px;">
+							<col style="width:800px;">
+							<col style="width:200px;">
+						</colgroup>
+						<thead class="thead">
+							<td>번호</td>
+							<td>제목</td>
+							<td>작성일</td>
+						</thead>
+						<tbody>
+							<tr th:each="notice: ${noticelist}">
+								<td th:text="${notice.id}">번호</td>
+								<td><a th:href="@{|/notice/${notice.id}|}">[[${notice.title}]] </a></td>
+								<td th:text="${notice.createdDate}">내용 </td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+
+		</div>
+		
+	
+
+	</main>
+
+</body>
+
+</html>

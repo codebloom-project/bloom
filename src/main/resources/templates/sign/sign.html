@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CodeBloom</title>
+		<link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+		<link rel="stylesheet" href="/css/sign/common.css">
+		<link rel="stylesheet" href="/css/sign/sign.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="/js/sign/sign.js"></script>
+		<script src="/js/sign/validation.js"></script>
+	</head>
+	<body class="sign-body">
+		<div class="sign-container flex center-1 center-2 fullWidth">
+		
+			<!-- Logo Container -->
+			<div class="logo-wrap flex center-1">
+				<img src="/img/sign/bloomLogo.png" alt="logo">
+			</div>
+			
+			
+			<!-- Sign In Form -->
+			<div id="sign-in" class="sign-wrap fullWidth flex center-1 show">
+				<div class="sign-content">
+					<div class="sign-head flex center-1 heavy">
+						<span>Sign In</span>
+					</div>
+					<form action="/sign/signin" method="post">
+						<div class="sign-input">
+							<img src="/img/sign/username-ico.svg" class="sign-ico" alt="ico">
+							<span class="companyMail">@codebloom.com</span>
+							<input type="text" id="onloadTarget" class="input" name="empUsername" placeholder="사용자 계정">
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/lock-ico.svg" class="sign-ico" alt="ico">
+							<input type="password" class="input" name="empPassword" placeholder="비밀번호">
+						</div>
+						<div class="sign-find-account flex end">
+							<span id="find-account-btn" class="text-btn-2 bold">계정을 잊어버리셨나요?</span>
+						</div>
+						<div class="sign-btn-1 flex center-1">
+							<button class="button">Sign In</button>
+						</div>
+					</form>
+					<div class="sign-btn-2 flex center-1 center-2">
+						<span>계정이 없으신가요?</span>
+						<span id="sign-up-btn" class="text-btn-1 bold">회원 가입</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Sign Up Form -->
+			<div id="sign-up" class="sign-wrap fullWidth flex center-1 hide">
+				<div class="sign-content">
+					<div class="sign-head flex center-1 heavy">
+						<span>Create Account</span>
+					</div>
+					<form action="/sign/signup" method="post" name="sign-up-form">
+						<div class="sign-input">
+							<img src="/img/sign/username-ico.svg" class="sign-ico" alt="ico">
+							<span class="companyMail">@codebloom.com</span>
+							<input type="text" id="emp-username" class="input" name="empUsername" placeholder="사용자 계정" onblur="validateEmpUsername()">
+						</div>
+						<div id="validation-message-1" class="validation-message hide">
+							<p id="username-error-1"></p>
+							<p id="username-error-2"></p>
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/lock-open-ico.svg" class="sign-ico" alt="ico">
+							<input type="password" id="emp-password" class="input" name="empPassword" placeholder="비밀번호" onblur="validateEmpPassword()">
+						</div>
+						<div id="validation-message-2" class="validation-message hide">
+							<p id="password-error-1"></p>
+							<p id="password-error-2"></p>
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/lock-ico.svg" class="sign-ico" alt="ico">
+							<input type="password" id="confirm-emp-password" class="input" name="confirmEmpPassword" placeholder="비밀번호 확인" onblur="validateConfirmEmpPassword()">
+						</div>
+						<div id="validation-message-3" class="validation-message hide">
+							<p id="confirm-password-error"></p>
+						</div>
+						<div class="sign-input flex center-1" >
+							<div id="sign-input-dept" class="sign-input-dept flex center-2">
+								<img src="/img/sign/group-ico.svg" class="dept-ico" alt="ico">
+								<label class="radio-btn">
+									행정<input type="radio" name="empDept" onclick="changeColor(this)" value="행정">
+								</label>
+								<label class="radio-btn">
+									인사<input type="radio" name="empDept" onclick="changeColor(this)" value="인사">
+								</label>
+								<label class="radio-btn">
+									재무<input type="radio" name="empDept" onclick="changeColor(this)" value="재무">
+								</label>
+								<label class="radio-btn">
+									강사<input type="radio" name="empDept" onclick="changeColor(this)" value="강사">
+								</label>
+							</div>
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/user-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" id="emp-name" class="input" name="empName" placeholder="이름" onblur="validateEmpName()">
+						</div>
+						<div id="validation-message-4" class="validation-message hide">
+							<p id="name-error"></p>
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/birth-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" id="emp-birth" class="input" name="empBirth" placeholder="생년월일 8자리">
+						</div>
+						<div id="validation-message-5" class="validation-message hide">
+							<p id="birth-day-error"></p>
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/call-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" id="emp-phone" class="input" name="empPhone" placeholder="'-' 없이 숫자만 입력">
+						</div>
+						<div id="validation-message-6" class="validation-message hide">
+							<p id="phone-number-error"></p>
+						</div>
+						<input type="hidden" name="empRole" value="사원">
+						<input type="hidden" name="empStatus" value="재직">
+						<div class="sign-btn-1 flex center-1">
+							<button class="button">Sign Up</button>
+						</div>
+					</form>
+					<div class="sign-btn-2 flex center-1 center-2">
+						<span>이미 계정이 있으신가요?</span>
+						<span id="sign-in-btn-1" class="text-btn-1 bold">로그인</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Find Account Form -->
+			<div id="find-account" class="sign-wrap fullWidth flex center-1 hide">
+				<div class="sign-content">
+					<div class="sign-head flex center-1 heavy">
+						<span>Find Account</span>
+					</div>
+					<div id="find-id flex center-1 center-2">
+						<div class="find-id-head flex center-1 center-2 bold">아이디 찾기</div>
+						<div class="sign-input">
+							<img src="/img/sign/call-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" class="input" name="empPhone" placeholder="'-' 없이 숫자만 입력">
+						</div>
+					</div>
+					<!--<div id="find-password">
+						<div>비밀번호 찾기</div>
+						<div class="sign-input">
+							<img src="/img/sign/mail-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" name="empEmail" placeholder="사용자 계정">
+						</div>
+						<div class="sign-input">
+							<img src="/img/sign/call-ico.svg" class="sign-ico" alt="ico">
+							<input type="text" name="empPhone" placeholder="'-' 없이 숫자만 입력">
+						</div>
+					</div>-->
+					<div class="sign-btn-2 flex center-1 center-2">
+						<span>계정을 찾으셨나요?</span>
+						<span id="sign-in-btn-2" class="text-btn-1 bold">로그인</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

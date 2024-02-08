@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.bloom.mybatis.mapper.SchedulePayMapper">
+	<insert id="save">
+		insert into schedule_document(sdoc_name, sdoc_cate, sdoc_content, sdoc_make, sdoc_start, sdoc_end, emp_no)
+		values(#{sdocName}, #{sdocCate}, #{sdocContent}, #{sdocMake}, #{sdocStart}, #{sdocEnd}, #{empNo})
+	</insert>
+	<select id="findAllLimit" resultType="com.green.bloom.domain.dto.SchedulePayDTO">
+		select * from schedule_document
+		where sdoc_no>0
+		order by sdoc_no desc
+		LIMIT #{offset}, #{limit}
+	</select>
+	<select id="countAll" resultType="int">
+		select count(*) from schedule_document
+		where sdoc_no>0
+	</select>
+	<select id="findLimit" resultType="com.green.bloom.domain.dto.SchedulePayDTO">
+		select * from schedule_document
+		where emp_no=#{empNo}
+		order by sdoc_no desc
+		LIMIT #{offset}, #{limit}
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from schedule_document
+		where emp_no=#{empNo}
+	</select>
+	<update id="updateScheduleCurrent">
+		update schedule_document
+		set sdoc_current=#{sdocCurrent}
+		where sdoc_no=#{sdocNo}
+	</update>
+</mapper>

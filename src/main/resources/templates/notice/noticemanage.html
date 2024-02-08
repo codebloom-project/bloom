@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/common/reset.css">
+	<link rel="stylesheet" href="/css/notice/noticemanage.css">
+	<style>
+		#listNotice{left:0}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div>
+			<div>
+				<div>
+					<p class="title-font">공지사항 목록</p>
+				</div>
+				<div>
+					<div class="bar">
+						<select>
+							<option>제목</option>
+							<option>내용</option>
+							<option>제목+내용</option>
+						</select>
+						<input type="search" class="searchbar" placeholder="입력하세요"
+							style="width:400px; margin-left:30px; height:30px;">
+						<input type="submit" class="submit">
+					</div>
+				</div>
+				<div class="wrapper">
+					<table>
+						<colgroup>
+							<col style="width:100px;">
+							<col style="width:800px;">
+							<col style="width:200px;">
+						</colgroup>
+						<thead class="thead">
+							<td>번호</td>
+							<td>제목</td>
+							<td>작성일</td>
+						</thead>
+
+						<tbody>
+							<tr th:each="notice: ${result.dtoList}">
+								<td th:text="${notice.id}">번호</td>
+								<td class="td_2" style="display: flex;">
+									<div><a th:href="@{|/notice/${notice.id}|}" th:text="${notice.title}">제목</a></div>
+									<form th:action="@{|/notice/${notice.id}|}" method="post" name="{id}">
+										<input type="hidden" name="_method" value="delete">
+										<button class="button">삭제</button>
+									</form>
+									<form th:action="@{|/notice/${notice.id}|}" method="put" name="{id}">
+										<input type="hidden" name="_method" value="update">
+										<button class="button">수정</button>
+									</form>
+								</td>
+								<!--<td th:text="${#dates.format(notice.updateDate, 'yyyy-MM-dd HH:mm:ss')}">작성일</td>-->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div>
+					<ul class="page-list flex center">
+						<li class="page-item pageNum page-prev" th:if="${result.prev}">
+							<a class="page-link" th:href="@{/noticemanage(page=${result.start -1})}" tabindex="-1">
+								<img src="/img/common/left.svg">
+							</a>
+							<span></span>
+						</li>
+						<th:block th:each="page:${result.pageList}">
+							<li>
+								<div class="pageNum">
+									<a th:href="@{/noticemanage(page=${page})}">
+										<p>[[${page}]]</p>
+									</a>
+								</div>
+							</li>
+							<span></span>
+						</th:block>
+						<l1 class="page-item pageNum page-next" th:if="${result.next}">
+							<a class="page-link" th:href="@{/noticemanage(page=${result.end+1})}">
+								<img src="/img/common/right.svg">
+							</a>
+						</l1>
+					</ul>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+
+
+
+	</main>
+
+</body>
+
+</html>

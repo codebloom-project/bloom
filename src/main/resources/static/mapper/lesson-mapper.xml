@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.bloom.mybatis.mapper.LessonMapper">
+	<insert id="save">
+		insert into lesson_document(lesson_name, lesson_cate, lesson_title, lesson_content, lesson_make, lesson_start, lesson_end, emp_no)
+		values(#{lessonName}, #{lessonCate}, #{lessonTitle}, #{lessonContent}, #{lessonMake}, #{lessonStart}, #{lessonEnd}, #{empNo})
+	</insert>
+	<select id="findAllLimit" resultType="com.green.bloom.domain.dto.LessonDTO">
+		select * from lesson_document
+		where lesson_no>0
+		order by lesson_no desc
+		LIMIT #{offset}, #{limit}
+	</select>
+	<select id="countAll" resultType="int">
+		select count(*) from lesson_document
+		where lesson_no>0
+	</select>
+	<select id="findLimit" resultType="com.green.bloom.domain.dto.LessonDTO">
+		select * from lesson_document
+		where emp_no=#{empNo}
+		order by lesson_no desc
+		LIMIT #{offset}, #{limit}
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from lesson_document
+		where emp_no=#{empNo}
+	</select>
+	<update id="updateLessonCurrent">
+		update lesson_document
+		set lesson_current=#{lessonCurrent}
+		where lesson_no=#{lessonNo}
+	</update>
+</mapper>

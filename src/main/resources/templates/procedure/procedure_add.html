@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<meta charset="UTF-8">
+<title>과정 등록</title>
+	<link rel="stylesheet" href="/css/procedure/procedure_add.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/procedure/procedure_add.js"></script>
+    <style>
+		#listLesson{left:0}
+	</style>
+</head>
+<body>
+<main>
+	<div class="container_proadd">
+		<p class="title-font">
+				과정 등록
+		</p>
+		<div class="content_proadd">
+			
+			<form name="proAddForm" action="/procedure_add" method="post" onsubmit="return validateAndSubmit()">
+				<div class="main_area">
+					<div class="teacher_area">
+						<div class="pro_input">
+							<div class="input_title">과정명</div>
+							<div class="input_item">
+								<input type="text" placeholder="과정명을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '과정명을 입력해주세요.', validateProName();" oninput="" autocomplete="off" class="input_txt" name="proName">
+							</div>
+						</div>
+						<div class="teacher_input">
+							<div class="input_title">담당 강사</div>
+							<select class="select_box" name="empName" id="empNameSelect" onchange="validateEmpName(); blurSelect(this);">
+		        				<option value="" selected disabled>담당 강사를 선택해주세요</option>
+							</select>
+						</div>
+					</div>
+					<div class="info_area">
+						<div class="info_input">
+							<div class="info_title">반</div>
+							<select class="select_box_info" name="proClass" onchange="validateProClass(); blurSelect(this);">
+		        				<option value="" selected disabled>반을 선택해주세요</option>
+								<option value="ee class">입시반</option>
+								<option value="hobby class">취미반</option>
+							</select>
+						</div>
+						<div class="info_input">
+							<div class="info_title">악기</div>
+							<select class="select_box_info" name="proType" onchange="validateProType(); blurSelect(this);">
+		        				<option value="" selected disabled>악기를 선택해주세요</option>
+								<option value="guitar">기타</option>
+								<option value="drum">드럼</option>
+								<option value="piano">피아노</option>
+							</select>
+						</div>
+					</div>
+					<div class="date_area">
+						<div class="start_area">
+							<div class="date_title">개강일</div>
+							<div class="date_item">
+								<button type="button" class="date_btn" id="startDateBtn">개강일 선택</button>
+								<input class="select_date" type="text" id="selectedStartDate" name="proStart" onchange="validateProStart(); " readonly>
+							</div>
+							<div class="datepicker" id="datepicker"></div>
+						</div>
+						<div class="end_area">
+							<div class="date_title">종강일</div>
+							<div class="date_item">
+								<button type="button" class="date_btn" id="endDateBtn">종강일 선택</button>
+								<input class="select_date" type="text" id="selectedEndDate" name="proEnd" onchange="validateProEnd(); " readonly>
+							</div>
+							<div class="datepicker" id="datepicker2"></div>
+						</div>
+					</div>
+					<div class="add_btn_box">
+						<input type="submit" value="등록 하기" class="add_box"></input>
+					</div>
+				</div>
+			</form>
+		</div>	
+	</div>
+</main>
+</body>
+</html>

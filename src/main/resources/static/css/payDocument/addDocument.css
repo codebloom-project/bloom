@@ -1,0 +1,116 @@
+@charset "UTF-8";
+.pay-doc{
+	position: relative;
+}
+.document p{
+	font-size: 1.3rem;
+}
+.document input, .document select{
+	height:40px;
+	margin-left: 10px;
+	width:150px;
+	font-size: 1.3rem;
+}
+.document .pay-input{
+	margin-bottom: 15px;
+}.document .pay-input p{
+	width:100px;
+}
+.document textarea{
+	width:100%;
+	height:300px;
+	margin-top: 20px;
+	font-size: 1.1rem;
+}
+.document .doc-btn button, .document .doc-btn div{
+	width:150px;
+	height:50px;
+	font-size: 1.3rem;
+	font-weight: bold;
+	background-color: #BE9FE1;
+	color:white;
+	border: 0px;
+	cursor: pointer;
+	margin:0;
+}
+.document .doc-btn span{
+	width:30px;
+	display: block;
+}
+.preview{
+	position: absolute;
+	width:101%;
+	height:95vh;
+	top:0;
+	left:0;
+	background-color:white;
+	display: none;
+}
+.preview .pre-page{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid black;
+	width:600px;
+	height:700px;
+	padding: 40px;
+}
+.preview .pre-page .pre-title{
+	margin-bottom: 30px;
+}
+.preview .pre-page .pre-title div{
+	width:25px;
+}
+.preview .pre-page p{
+	text-align: center;
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+.preview .pre-page td,
+.preview .pre-page tr,
+.preview .pre-page table{
+	border: 1px solid black;
+	border-collapse : collapse;
+}
+.preview .pre-page tr,
+.preview .pre-page table{
+	width:100%;
+}
+.preview .pre-page tr .pre-left{
+	width:30%;
+}
+.preview .pre-page tr .pre-right{
+	width:70%;
+}
+.preview .preview-close{
+	cursor: pointer;
+}
+.preview .pre-height{
+	height:50px;
+}
+.preview .pre-height td{
+	vertical-align: middle;
+	padding-left: 20px;
+	
+}
+.preview .pre-page table th{
+	vertical-align: middle;
+	text-align: center;
+	background-color: #DDCAE2;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+.preview .pre-page table .pre-content td{
+	height:400px;
+	padding: 20px;
+}
+.preview .pre-page table .pre-content td{
+	height:350px;
+}
+.preview .pre-page table .pre-two th{
+	width:30%;
+}
+.preview .pre-page table .pre-two td{
+	width:20%;
+}

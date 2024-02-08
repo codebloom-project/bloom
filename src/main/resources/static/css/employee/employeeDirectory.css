@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+.employee-directory-container {
+	width: 1090px;
+}
+
+.employee-list-container > div > span {
+	width: 75px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.employee-list-colspan {
+	width: 150px !important;
+}
+
+.employee-list-head > span {
+	border-top: 2px solid #C0C0C0;
+	border-bottom: 2px solid #C0C0C0;
+	font-weight: 600;
+}
+
+.employee-list {
+	border-bottom: 1px solid #DCDCDC;
+	font-size: 14px;
+	cursor: pointer;
+	transition: 0.15s;
+}
+
+.employee-list:hover {
+	background-color: #E5D1FA;
+}
+
+.employee-list-select {
+	width: 75px !important;
+}
+
+.employee-list > input {
+	height: 15px;
+}
+
+#employee-details-wrap,
+#employee-modify-wrap {
+	border-radius: 1rem;
+	background-color: #F5F5F5;
+	box-shadow: 0 10px 20px #C0C0C0;
+	font-family: 'NanumSquareNeo', sans-serif;
+}
+
+.employee-details-head {
+	position: relative;
+}
+
+.employee-details-head > span {
+	padding: 40px 0 20px 0;
+	font-size: 32px;
+	color: #52057B;
+}
+
+.employee-details-head > img {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+
+.employee-details {
+	display: flex;
+	border-radius: 0.5rem;
+	margin: 15px 25px;
+	background-color: #FFF;
+}
+
+.employee-details > span {
+	width: 70px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 15px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.employee-details > input {
+	border-left: 1px solid #DCDCDC;
+	padding-left: 15px;
+	font-family: 'NanumSquareNeo', sans-serif;
+	font-size: 14px;
+}
+
+.employee-details-dept {
+	font-size: 14px;
+}
+
+.employee-details-dept > span {
+	border-right: 1px solid #DCDCDC;
+}
+
+.employee-details-dept > label {
+	margin-left: 15px;
+	display: flex;
+	align-items: center;
+	font-family: 'NanumSquareNeo', sans-serif;
+}
+
+.employee-details-dept > label > input {
+	width: 15px;
+	height: 15px;
+	margin: 0 0 0 3px;
+}
+
+.employee-details-text {
+	width: 300px !important;
+	border-left: 1px solid #DCDCDC;
+	font-weight: 400 !important;
+}
+
+.employee-details-btn {
+	padding: 20px 0 20px 0;
+}
+
+.employee-details-btn > button:hover {
+	background-color: #892CDC;
+}

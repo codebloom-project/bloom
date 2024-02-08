@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+<head>
+<style>
+	#listPayDoc{left:0}
+</style>
+<link rel="stylesheet" href="/css/payDocument/user-document.css">
+<link rel="stylesheet" href="/css/payDocument/all-document.css">
+<style>
+	#lessonTap{
+		background-color: #B69CC9;
+		color: white;
+		border: none;
+		border: 1px solid #B69CC9;
+	}
+	#sdocTap{
+		background-color: white;
+		color: black;
+		border: 1px solid #222;
+	}
+</style>
+</head>
+<body>
+	<main>
+		<p class="title-font">결재문서</p>
+		<div class="flex center pay-tap">
+			<a href="/all-schedule-doc"><div id="sdocTap">일정결재문서</div></a>
+			<span></span>
+			<a href="/all-lesson-doc"><div id="lessonTap">강의개설결재문서</div></a>
+		</div>
+		<section class="lesson lesson-view">
+			<div class="flex between lesson_title">
+				<p class="small">번호</p>
+				<p class="large">기안자</p>
+				<p class="large">기안날짜</p>
+				<p class="small">종류</p>
+				<p class="large">제목</p>
+				<p class="large">결재현황</p>
+				<p class="small">결재</p>
+			</div>
+			<div class="flex between lesson_info" th:each="lesson:${lessonList}">
+				<p class="small" th:text="${lesson.lessonNo}"></p>
+				<p class="large" th:text="${lesson.lessonName}"></p>
+				<p class="large" th:text="${lesson.lessonMake}"></p>
+				<p class="small" th:text="${lesson.lessonCate}"></p>
+				<p class="large" th:text="${lesson.lessonTitle}"></p>
+				<p class="large" th:text="${lesson.lessonCurrent}"></p>
+				<div class="small pay-btn">
+					<button onclick="updateLesson()">결제하기</button>
+				</div>
+			</div>
+		</section>
+		<section class="lesson lesson-update" style="display:none;">
+			<div class="flex between lesson_title">
+				<p class="small">번호</p>
+				<p class="large">기안자</p>
+				<p class="large">기안날짜</p>
+				<p class="small">종류</p>
+				<p class="large">결재현황</p>
+				<p class="small">결재</p>
+			</div>
+			<form sec:authorize="isAuthenticated()" th:each="lesson:${lessonList}" th:action="|/all-lesson-doc/${lesson.lessonNo}|" method="post">
+				<div id="lesson-update" class="flex between lesson_info" >
+					<p class="small" th:text="${lesson.lessonNo}"></p>
+					<p class="large" th:text="${lesson.lessonName}"></p>
+					<p class="large" th:text="${lesson.lessonMake}"></p>
+					<p class="small" th:text="${lesson.lessonCate}"></p>
+					<select class="large" name="lessonCurrent">
+						<option value="결재대기">결재대기</option>
+						<option value="승인">승인</option>
+						<option value="반려">반려</option>
+						<option value="보류">보류</option>
+					</select>
+					<div class="small pay-btn-update flex between">
+						<input type="hidden" name="lessonNo" th:value="${lesson.lessonNo}">
+						<input type="hidden" name="_method" value="put">
+						<button type="submit">완료</button>
+						<button type="button" onclick="cancelLesson()">취소</button>
+					</div>
+				</div>
+			</form>
+		</section>
+		<div class="pagging-wrap">
+			<a th:if="${pu.from>1}" th:href="|/all-lesson-doc?page=${1}|">
+				<button>&LT;&LT;</button>
+			</a>
+			<a th:if="${pu.from>1}" th:href="|/all-lesson-doc?page=${pu.from-1}|">
+				<button>&LT;</button>
+			</a>
+			<span id="pagging">
+				<a class="btn-page" th:each="pno:${#numbers.sequence(pu.from,pu.to)}" th:href="|/all-lesson-doc?page=${pno}|">
+					<button th:text="${pno}"></button>
+				</a>
+			</span>
+			<a th:if="${pu.to < pu.tot}" th:href="|/all-lesson-doc?page=${pu.to+1}|">
+				<button>&GT;</button>
+			</a>
+			<a th:if="${pu.to < pu.tot}" th:href="|/all-lesson-doc?page=${pu.tot}|">
+				<button>&GT;&GT;</button>
+			</a>
+		</div>
+		<script th:inline="javascript">
+			var page=/*[[${param.page}]]*/null;
+			var pageLimit=/*[[${pu.pageLimit}]]*/null;
+			if(page==null) page="1";
+			//console.log(page);
+			var idx=(parseInt(page)-1)%pageLimit;
+			//const element = document.getElementById("pagging");
+			//jquery
+			//$(".btn-page").eq(idx).addClass("target");
+			//vanila js
+			var elements = document.querySelectorAll(".btn-page");
+			elements[idx].classList.add("target");
+			function updateLesson(){
+				//document.getElementById('detail-view').style.display='none';
+				const element = document.querySelector(".lesson-view");
+				element.style.display="none";
+				const updateView = document.querySelector(".lesson-update");
+				updateView.style.display="block";
+			}
+			function cancelLesson(){
+				const element = document.querySelector(".lesson-view");
+				element.style.display="block";
+				const updateView = document.querySelector(".lesson-update");
+				updateView.style.display="none";
+			}
+		</script>
+	</main>
+</body>
+</html>

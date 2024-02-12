@@ -1,0 +1,83 @@
+.mainarea{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#voting{
+	width: 80%;
+	border: 1px solid #ddd;
+}
+
+#voting table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#voting 
+th,
+td {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+/*label{*/
+/*	display: flex;*/
+/*	justify-content: center;*/
+/*}*/
+
+#voting 
+th {
+	text-align: left;
+	background-color: #f2f2f2;
+	width: 200px;
+	vertical-align: middle;
+}
+
+#voting 
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+	width: calc(100% - 20px);
+	padding: 8px;
+	margin: 5px 0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+#voting 
+textarea {
+	height: 100px;
+	resize: vertical;
+}
+
+#voting 
+button[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#voting 
+button[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+.add{
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 3px;
+	height: 25px;
+}
+
+.add:hover{
+	background-color: #45a049;
+}

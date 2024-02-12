@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<th:block th:replace="~{schedule/calendar::head}" />
+	<link rel="stylesheet" href="/css/voting/voting.css">
+	<script src="/js/voting/voting.js"></script>
+</head>
+
+<body>
+	<main>
+		<p class="title-font">투표 추가</p>
+		<br>
+		<div class="mainarea">
+			<form id="voting" action="/voting" method="post">
+				<table>
+					<tr>
+						<th><label class="flex center" for="title">투표 제목</label></th>
+						<td><input type="text" id="title" name="title"></td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="category">카테고리</label></th>
+						<td><input type="text" id="category" name="category"></td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="content">투표 내용</label></th>
+						<td><textarea id="content" name="content"></textarea></td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="start-date">시작일</label></th>
+						<td><input type="date" id="start-date" name="start-date"></td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="end-date">종료일</label></th>
+						<td><input type="date" id="end-date" name="end-date"></td>
+					</tr>
+					<tr>
+						<th><label class="flex center" >참여 부서</label></th>
+						<td>
+							<input type="radio" id="department-1">
+							<label for="department-1">행정부서&nbsp;</label>
+							<input type="radio" id="department-2">
+							<label for="department-2">재무부서&nbsp;</label>
+							<input type="radio" id="department-3">
+							<label for="department-3">인사부서</label>
+						</td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="options">선택지</label></th>
+						<td id="options-container" class="option-inputs">
+							<button class="add" type="button" onclick="addOptionInput()">추가하기</button>
+							<input type="text" name="options" placeholder="선택지 입력">
+						</td>
+					</tr>
+					<tr>
+						<th><label class="flex center" for="voting-method">투표 방식</label></th>
+						<td>
+							<select id="voting-method" name="voting-method">
+								<option value="single">단일 선택</option>
+								<option value="multiple">복수 선택</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<button type="submit">투표 생성</button>
+			</form>
+		</div>
+	</main>
+</body>
+
+</html>

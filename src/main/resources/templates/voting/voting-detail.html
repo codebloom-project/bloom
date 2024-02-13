@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<th:block th:replace="~{schedule/calendar::head}" />
+</head>
+
+<body>
+	<main>
+		<h2 th:text="${voting.title}"></h2>
+		<p th:text="${voting.content}"></p>
+		<form th:action="@{/submit-vote}" method="post">
+			<input type="hidden" name="votingId" th:value="${voting.no}">
+			<ul>
+				<li th:each="option : ${voting.option}">
+					<input type="radio" th:name="'voteOption'" th:value="${option}" required>
+					<label th:text="${option}"></label>
+				</li>
+			</ul>
+			<button type="submit">투표 제출</button>
+		</form>
+	</main>
+</body>
+
+</html>

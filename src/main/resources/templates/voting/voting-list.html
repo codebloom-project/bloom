@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<th:block th:replace="~{schedule/calendar::head}" />
+</head>
+
+<body>
+	<main>
+		<h2>투표 목록</h2>
+		<hr>
+		<ul>
+        <li th:each="voting : ${list}">
+            <a th:href="@{'/voting/' + ${voting.no}}">
+                <span th:text="${voting.title}"></span>
+            </a>
+        </li>
+    </ul>
+	</main>
+</body>
+
+</html>

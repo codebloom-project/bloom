@@ -27,7 +27,7 @@ public class ScheduleController {
 	
 	@Autowired
 	ScheduleService scheduleService;
-
+  
 	@GetMapping("/schedule")
 	public String schedule() {
 		return "schedule/schedule";

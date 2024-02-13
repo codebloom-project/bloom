@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout :: commonLayout(~{this::head}, ~{this::main})}">
 
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<th:block th:replace="~{schedule/calendar::head}" />
 	<link rel="stylesheet" href="/css/voting/voting.css">
@@ -21,8 +21,17 @@
 						<td><input type="text" id="title" name="title"></td>
 					</tr>
 					<tr>
-						<th><label class="flex center" for="category">카테고리</label></th>
-						<td><input type="text" id="category" name="category"></td>
+						<th><label class="flex center">카테고리</label></th>
+						<td style="display: flex; height: 30px; align-items: center;">
+							<input type="radio" name="category" id="category-1" value="점심메뉴">
+							<label for="category-1">점심메뉴&nbsp;</label>
+							<input type="radio" name="category" id="category-2" value="회사복지">
+							<label for="category-2">회사복지&nbsp;</label>
+							<input type="radio" name="category" id="category-3" value="사내 이벤트">
+							<label for="category-3">사내 이벤트&nbsp;</label>
+							<input type="radio" name="category" id="category-4" value="사무실 환경">
+							<label for="category-4">사무실 환경</label>
+						</td>
 					</tr>
 					<tr>
 						<th><label class="flex center" for="content">투표 내용</label></th>
@@ -30,34 +39,37 @@
 					</tr>
 					<tr>
 						<th><label class="flex center" for="start-date">시작일</label></th>
-						<td><input type="date" id="start-date" name="start-date"></td>
+						<td><input type="date" id="start-date" name="start"></td>
 					</tr>
 					<tr>
 						<th><label class="flex center" for="end-date">종료일</label></th>
-						<td><input type="date" id="end-date" name="end-date"></td>
+						<td><input type="date" id="end-date" name="end"></td>
 					</tr>
 					<tr>
-						<th><label class="flex center" >참여 부서</label></th>
-						<td>
-							<input type="radio" id="department-1">
+						<th><label class="flex center">참여 부서</label></th>
+						<td style="display: flex; height: 30px; align-items: center;">
+							<input type="radio" id="department-1" name="department" value="행정부서">
 							<label for="department-1">행정부서&nbsp;</label>
-							<input type="radio" id="department-2">
+							<input type="radio" id="department-2" name="department" value="재무부서">
 							<label for="department-2">재무부서&nbsp;</label>
-							<input type="radio" id="department-3">
+							<input type="radio" id="department-3" name="department" value="인사부서">
 							<label for="department-3">인사부서</label>
+							<input type="radio" id="department-4" name="department" value="전체부서">
+							<label for="department-4">전체부서</label>
 						</td>
 					</tr>
 					<tr>
 						<th><label class="flex center" for="options">선택지</label></th>
 						<td id="options-container" class="option-inputs">
 							<button class="add" type="button" onclick="addOptionInput()">추가하기</button>
-							<input type="text" name="options" placeholder="선택지 입력">
-						</td>
+							<input type="text" name="option" placeholder="선택지 입력">
+							<input type="text" name="option" placeholder="선택지 입력">
+						</td>                                                                                           
 					</tr>
 					<tr>
-						<th><label class="flex center" for="voting-method">투표 방식</label></th>
+						<th><label class="flex center" for="voting-style">투표 방식</label></th>
 						<td>
-							<select id="voting-method" name="voting-method">
+							<select id="voting-style" name="voting-style">
 								<option value="single">단일 선택</option>
 								<option value="multiple">복수 선택</option>
 							</select>

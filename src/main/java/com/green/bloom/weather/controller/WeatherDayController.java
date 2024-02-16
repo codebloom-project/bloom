@@ -25,13 +25,13 @@ import com.green.bloom.weather.dto.day.WeatherDayResponseDTO;
 @Controller
 public class WeatherDayController {
 	
-	@Value("${data.go.kr.service-key}")
+	@Value("${data.go.kr.service-key-cho}")
 	String serviceKey;
 	
 	private final String NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search";
 	private final String FORMAT = "jason";
 	
-	//초단기 실황조회
+	//초단기 예보조회
 	@ResponseBody
 	@GetMapping("/data/dayweather")
 	public List<ItemData> getUltraSrtNcst(WeatherDayInfo dto, Model model) throws IOException {

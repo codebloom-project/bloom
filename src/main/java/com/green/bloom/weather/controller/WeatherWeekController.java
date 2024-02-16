@@ -21,13 +21,13 @@ import com.green.bloom.weather.dto.week.WeatherWeekResponseDTO;
 @Controller
 public class WeatherWeekController {
 	
-	@Value("${data.go.kr.service-key}")
+	@Value("${data.go.kr.service-key-cho}")
 	String serviceKey;
 	
 	private final String NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search";
 	private final String FORMAT = "jason";
 	
-	//초단기 실황조회
+	//단기 예보조회
 	//@ResponseBody
 	@GetMapping("/data/weekweather")
 	public String getUltraSrtNcst(WeatherWeekInfo dto, Model model) throws IOException {

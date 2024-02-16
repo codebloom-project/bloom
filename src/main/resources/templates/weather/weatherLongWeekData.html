@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+</head>
+<body>
+
+<h1>Weather Forecast</h1>
+
+<!-- 에러 메시지가 있는 경우 표시 -->
+<div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<!-- 날씨 데이터가 있는 경우 표시 -->
+<div th:if="${weatherData}">
+    <table>
+        <thead>
+            <tr>
+                <th>기상전망</th>
+                <th>지점번호</th>
+                <th>발표시각</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 각 날씨 데이터 항목을 반복하며 표시 -->
+            <tr th:each="item : ${weatherData}">
+                <td th:text="${item.wfSv}"></td>
+                <td th:text="${item.stnId}"></td>
+                <td th:text="${item.tmFc}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -21,7 +21,7 @@ import com.green.bloom.weather.dto.live.WeatherLiveResponseDTO;
 @Controller
 public class WeatherLiveController {
 	
-	@Value("${data.go.kr.service-key}")
+	@Value("${data.go.kr.service-key-cho}")
 	String serviceKey;
 	
 	private final String NOMINATIM_API_URL = "https://nominatim.openstreetmap.org/search";

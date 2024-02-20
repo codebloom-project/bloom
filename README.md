@@ -24,7 +24,7 @@
 
   :blush: 고형철(팀장)
   
-    -  기상청 API를 이용한 날씨 하이차트, 출퇴근, 결재문서(Mybatis), 드라이브(AWS - S3) 구현
+    -  기상청 API를 이용한 날씨 하이차트, 출퇴근, 결재문서(Mybatis), 드라이브(AWS - S3) 구현, CICD
     
   :stuck_out_tongue_closed_eyes: 한재훈(부팀장) 
   
